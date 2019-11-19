@@ -13,7 +13,7 @@ public class TestMain {
     public static void main(String[] args) throws Exception{
         System.out.println("Hello database");
         
-        VinkDAO dao = new VinkDAO();
+        VinkDAO dao = new VinkDAO("test.db");
         dao.createTablesIfNotExist();
         ArrayList<String> test = new ArrayList<>();
         test.add("123");
