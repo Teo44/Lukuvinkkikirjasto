@@ -1,4 +1,4 @@
-package lukuvinkkikirjasto.domain;
+package domain;
 
 import java.util.ArrayList;
 
