@@ -1,5 +1,6 @@
 package database;
 
+import domain.Vink;
 import java.sql.*;
 
 /**
@@ -8,21 +9,23 @@ import java.sql.*;
  */
 public class VinkDAO {
     
-    public void addVink() {
-        // temporary for testing database 
-        String headline = "test";
-        String type = "video";
-        String tags = "on";
-        String comment = "test test 123";
+    public void addVink(Vink vink) {
+        
+        // make a string from the tag list for saving to SQLite
+        String tags = "";
+        for (Object s : vink.getTags()) {
+            tags += s;
+            tags += ";";
+        }
         
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:./test.db", "sa", "");
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO vink("
                     + "headline, type, tags, comment) VALUES (?, ?, ?, ?)");
-            stmt.setString(1, headline);
-            stmt.setString(2, type);
+            stmt.setString(1, vink.getHeadline());
+            stmt.setString(2, vink.getType());
             stmt.setString(3, tags);
-            stmt.setString(4, comment);
+            stmt.setString(4, vink.getComment());
 
             stmt.executeUpdate();
 
