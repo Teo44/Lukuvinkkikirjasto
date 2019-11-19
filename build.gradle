@@ -18,4 +18,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-mainClassName = 'ohtu.Main'
+mainClassName = 'lukuvinkkikirjasto.Main'
