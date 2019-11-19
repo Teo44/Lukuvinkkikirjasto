@@ -3,4 +3,8 @@
 
 # Ignore Gradle build output directory
 build
+<<<<<<< HEAD
 /.nb-gradle/
+=======
+/.nb-gradle/
+>>>>>>> 6fc85bfe88600c85f14d076256849a10c533570e
