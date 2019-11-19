@@ -40,12 +40,12 @@ public class Vink {
         this.tags = tags;
     }
 
-    public String getConmment() {
+    public String getComment() {
         return comment;
     }
 
-    public void setConmment(String conmment) {
-        this.comment = conmment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
     
     
