@@ -2,18 +2,18 @@ package lukuvinkkikirjasto.domain;
 
 import java.util.ArrayList;
 
-public class vink {
+public class Vink {
 
     private String headline;
     private String type;
     private ArrayList<String> tags;
-    private String conmment;
+    private String comment;
 
-    public vink(String headline, String type, ArrayList<String> tags, String comment) {
+    public Vink(String headline, String type, ArrayList<String> tags, String comment) {
         this.headline = headline;
         this.type = type;
         this.tags = tags;
-        this.conmment = comment;   
+        this.comment = comment;   
     }
 
     public String getHeadline() {
@@ -41,11 +41,11 @@ public class vink {
     }
 
     public String getConmment() {
-        return conmment;
+        return comment;
     }
 
     public void setConmment(String conmment) {
-        this.conmment = conmment;
+        this.comment = conmment;
     }
     
     
