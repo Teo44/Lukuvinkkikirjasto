@@ -24,7 +24,7 @@ public class Textual {
         while (true) {
             System.out.println("");
             
-            command = askUser("give command, recognized commands: [new, list, quit]");
+            command = askUser("give command, recognized commands: [new, list, delete, quit]");
             command = command.toLowerCase();
             
             System.out.println("new = add new vink");
@@ -57,6 +57,18 @@ public class Textual {
                     v.getTags().forEach(t -> System.out.println(" " + t));
                     System.out.println("Comment: " + v.getComment());
                 });
+            } else if (command.equals("delete")) {
+                System.out.println("");
+                System.out.println("Deleting vink by Title");
+                String title = askUser("Title of vink to delete");
+                if (!title.trim().isEmpty()) {
+                    boolean vinkDeletedSuccesfully = logic.deleteVinkByTitle(title);
+                    if (vinkDeletedSuccesfully) {
+                        System.out.println("Vink deleted");
+                    } else {
+                        System.out.println("Soemthing went wrong when trying to delete vink");
+                    }
+                }            
             } else if (command.equals("quit")) {
                 break;
             } else {
