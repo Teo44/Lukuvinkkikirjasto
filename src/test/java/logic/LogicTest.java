@@ -12,21 +12,16 @@ import database.VinkDAO;
 
 public class LogicTest {
     
-    public LogicTest() {
-        
-    }
-    
+    static VinkDAO vinkDao;
+
     @BeforeClass
-    public static void setUpClass() {
-        
+    public static void setUp() {
+        vinkDao = new VinkDAO("fakeDb");
     }
+
     
     @AfterClass
     public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
     }
     
     @After

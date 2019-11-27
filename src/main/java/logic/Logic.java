@@ -10,8 +10,8 @@ import java.util.Set;
 public class Logic {
     private VinkDAO vinkDao;
     
-    public Logic() {
-        vinkDao = new VinkDAO("vinkDatabase.db");
+    public Logic(VinkDAO vinkDao) {
+        this.vinkDao = vinkDao;
         vinkDao.createTablesIfNotExist();
     }
     
