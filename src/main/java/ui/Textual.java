@@ -40,12 +40,13 @@ public class Textual {
                 
                 if (vinkCreatedSuccesfully) {
                     System.out.println("Vink created!");
-                } else if (command.equals("list")) {
-                    System.out.println("All vinks");
-                    logic.getAllVinks().forEach(v -> System.out.println(" " + v.getHeadline()));
-                }else {
+                } else {
                     System.out.println("Something went wrong, try again");
                 }
+                
+            } else if (command.equals("list")) {
+                System.out.println("All vinks:");
+                logic.getAllVinks().forEach(v -> System.out.println(" " + v.getHeadline()));
             } else if (command.equals("quit")) {
                 break;
             } else {
@@ -63,7 +64,7 @@ public class Textual {
         
         System.out.println("Enter tags, one per line. empty string ends.");
         while (true) {
-            tag = askUser(" Give tag:");
+            tag = askUser(" Give tag");
             if (tag.isEmpty()) break;
             tags.add(tag);
         }
