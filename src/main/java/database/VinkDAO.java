@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class VinkDAO {
     
-    private final String dbFileName;
+    final private String dbFileName;
     
     public VinkDAO(String dbFileName)   {
         this.dbFileName = dbFileName;
@@ -20,7 +20,8 @@ public class VinkDAO {
     public ArrayList<Vink> getAllVinks()    {
         ArrayList<Vink> vinks = new ArrayList<>();
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:./" + dbFileName, "sa", "");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:sqlite:./" + dbFileName, "sa", "");
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Vink");
             ResultSet rs = stmt.executeQuery();
             while (rs.next())   {
@@ -52,7 +53,8 @@ public class VinkDAO {
      */
     public boolean deleteVink(Integer databaseID)   {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:./" + dbFileName, "sa", "");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:sqlite:./" + dbFileName, "sa", "");
             PreparedStatement stmt = connection.prepareStatement("DELETE FROM Vink "
                     + "WHERE id = ?");
             stmt.setInt(1, databaseID);
@@ -78,7 +80,8 @@ public class VinkDAO {
         }
         
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:./" + dbFileName, "sa", "");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:sqlite:./" + dbFileName, "sa", "");
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Vink("
                     + "headline, type, tags, comment) VALUES (?, ?, ?, ?)");
             stmt.setString(1, vink.getHeadline());
