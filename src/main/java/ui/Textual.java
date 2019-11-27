@@ -1,7 +1,6 @@
 package ui;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import logic.Logic;
 import io.IO;
 
