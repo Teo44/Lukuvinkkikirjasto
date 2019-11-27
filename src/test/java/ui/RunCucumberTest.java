@@ -1,4 +1,4 @@
-package domain;
+package ui;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     plugin = "pretty", 
-    features = "src/test/resources/domain", 
+    features = "src/test/resources/ui", 
     snippets = SnippetType.CAMELCASE 
 )
 
