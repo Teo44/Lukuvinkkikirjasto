@@ -24,7 +24,7 @@ public class Textual {
         while (true) {
             System.out.println("");
             
-            command = askUser("give command, recognized commands: [new, quit]");
+            command = askUser("give command, recognized commands: [new, list, quit]");
             command = command.toLowerCase();
             
             System.out.println("new = add new vink");
@@ -40,7 +40,10 @@ public class Textual {
                 
                 if (vinkCreatedSuccesfully) {
                     System.out.println("Vink created!");
-                } else {
+                } else if (command.equals("list")) {
+                    System.out.println("All vinks");
+                    logic.getAllVinks().forEach(v -> System.out.println(" " + v.getHeadline()));
+                }else {
                     System.out.println("Something went wrong, try again");
                 }
             } else if (command.equals("quit")) {
