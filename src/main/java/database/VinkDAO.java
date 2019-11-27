@@ -1,6 +1,7 @@
 package database;
 
 import domain.Vink;
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -92,23 +93,8 @@ public class VinkDAO {
     }
     
     public void createOrResetTables()   {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:./" + dbFileName, "sa", "");
-            PreparedStatement statement = connection.prepareStatement("CREATE TABLE Vink(\n"
-                    + "id INTEGER PRIMARY KEY,\n"
-                    + "headline varchar(144),\n"
-                    + "type varchar(64),\n"
-                    + "tags varchar(144),\n"
-                    + "comment varchar(144)\n"
-                    + ");");
-            statement.execute();
-
-            statement.close();
-            connection.close();
-            // debug
-            System.out.println("Created new SQLite database file");
-        } catch (Exception e)  {
-            System.out.println(e);
-        }
+        File dbFile = new File(dbFileName);
+        dbFile.delete();
+        createTablesIfNotExist();
     }
 }
