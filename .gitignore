@@ -7,7 +7,7 @@ build
 /.nb-gradle/
 
 # Database files
-test.db
+*.db
 
 
 .settings/

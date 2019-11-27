@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class VinkDAO {
     
-    private String dbFileName;
+    private final String dbFileName;
     
     public VinkDAO(String dbFileName)   {
         this.dbFileName = dbFileName;
@@ -45,7 +45,7 @@ public class VinkDAO {
     
     public void addVink(Vink vink) {
         
-        // make a string from the tag list for saving to SQLite
+        // convert list to a single string for saving to database
         String tags = "";
         for (Object s : vink.getTags()) {
             tags += s;
@@ -91,4 +91,24 @@ public class VinkDAO {
         }
     }
     
+    public void createOrResetTables()   {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:./" + dbFileName, "sa", "");
+            PreparedStatement statement = connection.prepareStatement("CREATE TABLE Vink(\n"
+                    + "id INTEGER PRIMARY KEY,\n"
+                    + "headline varchar(144),\n"
+                    + "type varchar(64),\n"
+                    + "tags varchar(144),\n"
+                    + "comment varchar(144)\n"
+                    + ");");
+            statement.execute();
+
+            statement.close();
+            connection.close();
+            // debug
+            System.out.println("Created new SQLite database file");
+        } catch (Exception e)  {
+            System.out.println(e);
+        }
+    }
 }
