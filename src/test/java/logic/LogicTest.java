@@ -9,6 +9,7 @@ import database.VinkDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import logic.Logic;
+import org.junit.Before;
 
 public class LogicTest {
     
@@ -18,12 +19,17 @@ public class LogicTest {
 
     @BeforeClass
     public static void setUp() {
-        vinkDao = new VinkDAO("fakeDb.db");
+        vinkDao = new VinkDAO("logicTestDatabase.db");
         logic = new Logic(vinkDao);
         list = new ArrayList<>();
         list.add("test1");
         list.add("test2");
         list.add("test3");
+    }
+    
+    @Before
+    public void resetTables()    {
+        vinkDao.createOrResetTables();
     }
 
     
@@ -50,7 +56,7 @@ public class LogicTest {
         logic.saveVink("testTitle2", "testType", list, "testComment");
         ArrayList<Vink> vinks = vinkDao.getAllVinks();
         assertEquals(vinks.get(0).getHeadline(), "testTitle");
-        assertEquals(vinks.get(0).getHeadline(), "testTitle2");
+        assertEquals(vinks.get(1).getHeadline(), "testTitle2");
     }
 
 }
