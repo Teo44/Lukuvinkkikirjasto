@@ -45,8 +45,18 @@ public class Textual {
                 }
                 
             } else if (command.equals("list")) {
+                System.out.println("");
                 System.out.println("All vinks:");
-                logic.getAllVinks().forEach(v -> System.out.println(" " + v.getHeadline()));
+                System.out.println("----------");
+                
+                logic.getAllVinks().forEach(v -> {
+                    System.out.println("");
+                    System.out.println("Headline: " + v.getHeadline());
+                    System.out.println("Type: " + v.getType());
+                    System.out.println("Tags: ");
+                    v.getTags().forEach(t -> System.out.println(" " + t));
+                    System.out.println("Comment: " + v.getComment());
+                });
             } else if (command.equals("quit")) {
                 break;
             } else {
