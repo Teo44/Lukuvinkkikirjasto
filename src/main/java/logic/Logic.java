@@ -27,9 +27,16 @@ public class Logic {
         return vinkDao.getAllVinks();
     }
     
-    public boolean deleteVink(int id) {
-        vinkDao.deleteVink(id);
-        return true;
+
+    public boolean deleteVinkByTitle(String title) {
+        ArrayList<Vink> vinkList = getAllVinks();
+        for (int i = 0; i < vinkList.size(); i++) {
+            if (vinkList.get(i).getHeadline().equals(title)) {
+                vinkDao.deleteVink(vinkList.get(i).getDatabaseID());
+                return true;
+            }
+        }
+        return false;
     }
     
     private ArrayList<String> deleteDuplicates(ArrayList<String> list) {
