@@ -32,11 +32,11 @@ dependencies {
     testCompile 'io.cucumber:cucumber-junit:' + cucumberVersion
     testCompile 'junit:junit:' + junitVersion
 }
-
+/*
 test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
-}
+} */
 
 mainClassName = 'lukuvinkkikirjasto.Main'
 
@@ -54,5 +54,11 @@ jacocoTestReport {
     reports {
         xml.enabled true
         html.enabled true
+    }
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+              fileTree(dir: it,
+                  exclude: ['main/**'])
+        })
     }
 }
