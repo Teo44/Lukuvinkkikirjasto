@@ -24,6 +24,7 @@ public class VinkDAO {
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Vink");
             ResultSet rs = stmt.executeQuery();
             while (rs.next())   {
+                Integer databaseID = rs.getInt("id");
                 String headline = rs.getString("headline");
                 String type = rs.getString("type");
                 String tagsAsString = rs.getString("tags");
@@ -33,7 +34,7 @@ public class VinkDAO {
                 for (int i = 0; i < splitTag.length; i++) {
                     tags.add(splitTag[i]);
                 }
-                vinks.add(new Vink(headline, type, tags, comment));
+                vinks.add(new Vink(headline, type, tags, comment, databaseID));
             }
             rs.close();
             stmt.close();
@@ -44,8 +45,31 @@ public class VinkDAO {
         return vinks;
     }
     
+    /**
+     * 
+     * @param databaseID 
+     * @return Returns true if deletion successful
+     */
+    public boolean deleteVink(Integer databaseID)   {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:./" + dbFileName, "sa", "");
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Vink "
+                    + "WHERE id = ?");
+            stmt.setInt(1, databaseID);
+            int deleted = stmt.executeUpdate();
+            if (deleted == 0)   {
+                return false;
+            }
+            stmt.close();
+            connection.close();
+            return true;
+        } catch (Exception e)   {
+            System.out.println(e);
+        }
+        return false;
+    }
+    
     public void addVink(Vink vink) {
-        
         // convert list to a single string for saving to database
         String tags = "";
         for (Object s : vink.getTags()) {
