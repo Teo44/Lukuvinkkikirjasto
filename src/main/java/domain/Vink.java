@@ -8,12 +8,22 @@ public class Vink {
     private String type;
     private ArrayList<String> tags;
     private String comment;
+    private Integer databaseID;
 
     public Vink(String headline, String type, ArrayList<String> tags, String comment) {
         this.headline = headline;
         this.type = type;
         this.tags = tags;
+        this.comment = comment; 
+        this.databaseID = -1;
+    }
+    
+    public Vink(String headline, String type, ArrayList<String> tags, String comment, Integer ID) {
+        this.headline = headline;
+        this.type = type;
+        this.tags = tags;
         this.comment = comment;   
+        this.databaseID = ID;
     }
 
     public String getHeadline() {
@@ -47,6 +57,12 @@ public class Vink {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
-    
+
+    public Integer getDatabaseID() {
+        return databaseID;
+    }
+
+    public void setDatabaseID(Integer databaseID) {
+        this.databaseID = databaseID;
+    }
 }
