@@ -25,6 +25,8 @@ public class Textual {
             System.out.println("");
             
             command = askUser("give command, recognized commands: [new, quit]");
+            command = command.toLowerCase();
+            
             System.out.println("new = add new vink");
             System.out.println("");
             
@@ -34,7 +36,13 @@ public class Textual {
                 ArrayList<String> tags = askForTags();
                 String comment = askUser("Comment");
                 
-                logic.saveVink(title, type, tags, comment);
+                boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment);
+                
+                if (vinkCreatedSuccesfully) {
+                    System.out.println("Vink created!");
+                } else {
+                    System.out.println("Something went wrong, try again");
+                }
             } else if (command.equals("quit")) {
                 break;
             } else {
