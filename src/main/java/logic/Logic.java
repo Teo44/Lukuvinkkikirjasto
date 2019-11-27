@@ -9,7 +9,8 @@ public class Logic {
     private VinkDAO vinkDao;
     
     public Logic() {
-        
+        vinkDao = new VinkDAO("vinkDatabase.db");
+        vinkDao.createTablesIfNotExist();
     }
     
     public void saveVink(String headline, String type, ArrayList<String> tags, String comment) {
