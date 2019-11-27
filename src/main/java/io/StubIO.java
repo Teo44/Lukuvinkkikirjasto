@@ -18,11 +18,6 @@ public class StubIO implements IO {
         prints.add(toPrint);
     }
 
-    public int readInt(String prompt) {
-        print(prompt);
-        return Integer.parseInt(lines.get(i++));
-    }
-
     public ArrayList<String> getPrints() {
         return prints;
     }
@@ -37,6 +32,6 @@ public class StubIO implements IO {
 
     @Override
     public String askUser(String question) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return readLine(question);
     }
 }
