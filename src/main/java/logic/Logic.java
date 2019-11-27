@@ -6,7 +6,6 @@ import database.VinkDAO;
 import java.util.ArrayList;
 
 public class Logic {
-    private Vink vink;
     private VinkDAO vinkDao;
     
     public Logic() {
@@ -18,16 +17,8 @@ public class Logic {
         vinkDao.addVink(vink);
     }
     
-    public Vink fetchVink() {
-        return null;
-    }
-    
-    public String getVink() {
-        return ("");
-    }
-    
     public ArrayList<Vink> getAllVinks() {
-        return null;
+        return vinkDao.getAllVinks();
     }
     
     
