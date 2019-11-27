@@ -34,9 +34,12 @@ public class VinkDAO {
                 }
                 vinks.add(new Vink(headline, type, tags, comment));
             }
+            rs.close();
+            stmt.close();
+            connection.close();
         } catch (Exception e)   {
             System.out.println(e);
-        }
+        } 
         return vinks;
     }
     
