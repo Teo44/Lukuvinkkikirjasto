@@ -1,56 +1,58 @@
 package ui;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import logic.Logic;
 
 public class Textual {
     
     private Scanner scanner;
+    private Logic logic;
     
-    public Textual(Scanner scanner) {
+    public Textual(Scanner scanner, Logic logic) {
         this.scanner = scanner;
+        this.logic = logic;
     }
     
     public void run() {
         System.out.println("Welcome to Lukuvinkkikirjasto.");
         System.out.println("give an command, quit exits");
-        System.out.println("");
+        System.out.println("------------------------------");
         
         String command = null;
         
         while (true) {
+            System.out.println("");
+            
             command = askUser("give command, recognized commands: [new, quit]");
             System.out.println("new = add new vink");
-            
-            System.out.println("command: " + command);
+            System.out.println("");
             
             if (command.equals("new")) {
                 String title = askUser("Title");
                 String type = askUser("Type");
-                List<String> tags = askForTags();
+                ArrayList<String> tags = askForTags();
                 String comment = askUser("Comment");
                 
-                System.out.println("got:");
-                System.out.println("title: " + title);
-                System.out.println("type: " + type);
-                System.out.println("tags:" + tags);
-                tags.forEach(t -> System.out.println(t));
-                System.out.println("comment:" + comment);
-                //save new vink
+                logic.saveVink(title, type, tags, comment);
             } else if (command.equals("quit")) {
                 break;
+            } else {
+                System.out.println("Unrecognized Command");
             }
         }
+        
+        System.out.println("");
+        System.out.println("Exiting!..");
     }
     
-    private List<String> askForTags() {
-        List<String> tags = new ArrayList<>();
+    private ArrayList<String> askForTags() {
+        ArrayList<String> tags = new ArrayList<>();
         String tag = "";
         
-        System.out.println("enter tags, one per line. empty string ends.");
+        System.out.println("Enter tags, one per line. empty string ends.");
         while (true) {
-            tag = askUser(" give tag:");
+            tag = askUser(" Give tag:");
             if (tag.isEmpty()) break;
             tags.add(tag);
         }
@@ -67,7 +69,7 @@ public class Textual {
      */
     private String askUser(String question) {
         System.out.print(question + ": ");
-        return scanner.nextLine().trim().toLowerCase();
+        return scanner.nextLine().trim();
     }
     
 }
