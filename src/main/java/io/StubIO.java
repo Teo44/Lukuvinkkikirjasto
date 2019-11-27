@@ -34,4 +34,9 @@ public class StubIO implements IO {
         }
         return "";
     }
+
+    @Override
+    public String askUser(String question) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

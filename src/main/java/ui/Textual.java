@@ -3,107 +3,96 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 import logic.Logic;
+import io.IO;
 
 public class Textual {
     
-    private Scanner scanner;
+    private IO io;
     private Logic logic;
     
-    public Textual(Scanner scanner, Logic logic) {
-        this.scanner = scanner;
+    public Textual(Logic logic, IO io) {
         this.logic = logic;
+        this.io = io;
     }
     
     public void run() {
-        System.out.println("Welcome to Lukuvinkkikirjasto.");
-        System.out.println("give an command, quit exits");
-        System.out.println("------------------------------");
+        io.print("Welcome to Lukuvinkkikirjasto.");
+        io.print("give an command, quit exits");
+        io.print("------------------------------");
         
         String command = null;
         
         while (true) {
-            System.out.println("");
+            io.print("");
             
-            command = askUser("give command, recognized commands: [new, list, delete, quit]");
+            command = io.askUser("give command, recognized commands: [new, list, delete, quit]");
             command = command.toLowerCase();
             
-            System.out.println("new = add new vink");
-            System.out.println("");
+            io.print("new = add new vink");
+            io.print("");
             
             if (command.equals("new")) {
-                String title = askUser("Title");
-                String type = askUser("Type");
+                String title = io.askUser("Title");
+                String type = io.askUser("Type");
                 ArrayList<String> tags = askForTags();
-                String comment = askUser("Comment");
+                String comment = io.askUser("Comment");
                 
                 boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment);
                 
                 if (vinkCreatedSuccesfully) {
-                    System.out.println("Vink created!");
+                    io.print("Vink created!");
                 } else {
-                    System.out.println("Something went wrong, try again");
+                    io.print("Something went wrong, try again");
                 }
                 
             } else if (command.equals("list")) {
-                System.out.println("");
-                System.out.println("All vinks:");
-                System.out.println("----------");
+                io.print("");
+                io.print("All vinks:");
+                io.print("----------");
                 
                 logic.getAllVinks().forEach(v -> {
-                    System.out.println("");
-                    System.out.println("Headline: " + v.getHeadline());
-                    System.out.println("Type: " + v.getType());
-                    System.out.println("Tags: ");
-                    v.getTags().forEach(t -> System.out.println(" " + t));
-                    System.out.println("Comment: " + v.getComment());
+                    io.print("");
+                    io.print("Headline: " + v.getHeadline());
+                    io.print("Type: " + v.getType());
+                    io.print("Tags: ");
+                    v.getTags().forEach(t -> io.print(" " + t));
+                    io.print("Comment: " + v.getComment());
                 });
             } else if (command.equals("delete")) {
-                System.out.println("");
-                System.out.println("Deleting vink by Title");
-                String title = askUser("Title of vink to delete");
+                io.print("");
+                io.print("Deleting vink by Title");
+                String title = io.askUser("Title of vink to delete");
                 if (!title.trim().isEmpty()) {
                     boolean vinkDeletedSuccesfully = logic.deleteVinkByTitle(title);
                     if (vinkDeletedSuccesfully) {
-                        System.out.println("Vink deleted");
+                        io.print("Vink deleted");
                     } else {
-                        System.out.println("Soemthing went wrong when trying to delete vink");
+                        io.print("Soemthing went wrong when trying to delete vink");
                     }
                 }            
             } else if (command.equals("quit")) {
                 break;
             } else {
-                System.out.println("Unrecognized Command");
+                io.print("Unrecognized Command");
             }
         }
         
-        System.out.println("");
-        System.out.println("Exiting!..");
+        io.print("");
+        io.print("Exiting!..");
     }
     
     private ArrayList<String> askForTags() {
         ArrayList<String> tags = new ArrayList<>();
         String tag = "";
         
-        System.out.println("Enter tags, one per line. empty string ends.");
+        io.print("Enter tags, one per line. empty string ends.");
         while (true) {
-            tag = askUser(" Give tag");
+            tag = io.askUser(" Give tag");
             if (tag.isEmpty()) break;
             tags.add(tag);
         }
         
         return tags;
-    }
-    
-    /**
-     * Prints the given string parameter to the console
-     * and appends " :" to the end. Returns user
-     * input string.
-     * @param question
-     * @return user input
-     */
-    private String askUser(String question) {
-        System.out.print(question + ": ");
-        return scanner.nextLine().trim();
     }
     
 }

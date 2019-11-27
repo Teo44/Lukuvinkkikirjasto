@@ -18,5 +18,11 @@ public class ConsoleIO implements IO {
         System.out.println(prompt);
         return scanner.nextLine();
     }
+
+    @Override
+    public String askUser(String question) {
+        System.out.print(question + ": ");
+        return scanner.nextLine().trim();
+    }
     
 }
