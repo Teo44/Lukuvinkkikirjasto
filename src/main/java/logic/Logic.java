@@ -31,11 +31,12 @@ public class Logic {
     public boolean deleteVinkByTitle(String title) {
         ArrayList<Vink> vinkList = getAllVinks();
         for (int i = 0; i < vinkList.size(); i++) {
-            if (vinkList.get(i).getHeadline() == title) {
+            if (vinkList.get(i).getHeadline().equals(title)) {
                 vinkDao.deleteVink(vinkList.get(i).getDatabaseID());
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     private ArrayList<String> deleteDuplicates(ArrayList<String> list) {
