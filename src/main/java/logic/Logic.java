@@ -23,8 +23,22 @@ public class Logic {
                                             //logic to be implemented later
     }
     
-    public ArrayList<Vink> getAllVinks() {
-        return vinkDao.getAllVinks();
+    public Vink getVinkByTitle(String title) {
+        ArrayList<Vink> vinkList = getAllVinks();
+        for (int i = 0; i < vinkList.size(); i++) {
+            if (vinkList.get(i).getHeadline().equals(title)) {
+                return vinkList.get(i);
+            }
+        }
+        return null;
+    }
+    
+    public boolean updateVink(Vink vink) {
+        boolean successful = vinkDao.updateVink(vink.getDatabaseID(), vink);
+        if (successful) {
+            return true;
+        }
+        return false;
     }
     
 
@@ -45,6 +59,10 @@ public class Logic {
         newList.clear();
         newList.addAll(set);
         return newList;
+    }
+    
+    public ArrayList<Vink> getAllVinks() {
+        return vinkDao.getAllVinks();
     }
     
     
