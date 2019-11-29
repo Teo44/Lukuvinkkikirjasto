@@ -80,4 +80,14 @@ public class Stepdefs {
         
     }
     
+    @Then("system will respond with list {string} , {string} , {string} , {string} , {string}")
+    public void systemWillRespondWithList(String e1, String e2, String e3, String e4, String e5) {
+        ArrayList vink = new ArrayList<>();
+        vink.add("Headline: " + e1);
+        vink.add("Type: " + e2);
+        vink.add("-" + e3);
+        vink.add("Comment: " + e4);
+        vink.add("Link: " + e5);
+        assertTrue(io.getPrints().containsAll(vink));
+    }
 }

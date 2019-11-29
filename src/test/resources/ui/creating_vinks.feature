@@ -7,7 +7,7 @@ Feature: User can create vinks
 
     Scenario: user can list all the vinks
         Given command list is selected
-        Then  system will respond with "Link: https://testilinkki.com"
+        Then  system will respond with list "Testi" , "testiTyyppi" , "testitagi1" , "testi komeentti" , "https://testilinkki.com"
 
 
     Scenario: user can delete a vink
