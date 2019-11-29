@@ -19,10 +19,10 @@ public class ListAllVinks extends Command {
             io.print("Headline: " + v.getHeadline());
             io.print("Type: " + v.getType());
             io.print("Tags: ");
-            v.getTags().forEach(t -> io.print(" " + t));
+            v.getTags().forEach(t -> io.print("-" + t));
             io.print("Comment: " + v.getComment());
-            if (!(v.getComment().equals("")))   {
-                io.print("Link: " + v.getComment());
+            if (!(v.getLink().equals("")))   {
+                io.print("Link: " + v.getLink());
             }
         });
     }
