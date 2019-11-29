@@ -46,6 +46,32 @@ public class VinkDAO {
         return vinks;
     }
     
+    public boolean updateVink(Vink updatedVink)   {
+        try {
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:sqlite:./" + dbFileName, "sa", "");
+            PreparedStatement stmt = connection.prepareStatement("UPDATE Vink "
+                    + "SET headline = ?, type = ?, tags = ?, comment = ?"
+                    + "WHERE id = ?");
+            stmt.setString(1, updatedVink.getHeadline());
+            stmt.setString(2, updatedVink.getType());
+            stmt.setString(3, tagListToString(updatedVink.getTags()));
+            stmt.setString(4, updatedVink.getComment());
+            stmt.setInt(5, updatedVink.getDatabaseID());
+            int modified = stmt.executeUpdate();
+            if (modified == 0)  {
+                return false;
+            }
+            System.out.println("dao: " + updatedVink.getHeadline());
+            stmt.close();
+            connection.close();
+            return true;
+        } catch (Exception e)   {
+            System.out.println(e);
+        }
+        return false;
+    }
+    
     /**
      * 
      * @param databaseID 
@@ -72,12 +98,7 @@ public class VinkDAO {
     }
     
     public void addVink(Vink vink) {
-        // convert list to a single string for saving to database
-        String tags = "";
-        for (Object s : vink.getTags()) {
-            tags += s;
-            tags += ";";
-        }
+        String tags = tagListToString(vink.getTags());
         
         try {
             Connection connection = DriverManager.getConnection(
@@ -88,7 +109,6 @@ public class VinkDAO {
             stmt.setString(2, vink.getType());
             stmt.setString(3, tags);
             stmt.setString(4, vink.getComment());
-
             stmt.executeUpdate();
 
             stmt.close();
@@ -117,6 +137,15 @@ public class VinkDAO {
         } catch (Exception e)  {
             System.out.println(e);
         }
+    }
+    
+    private String tagListToString(ArrayList<String> tagList)    {
+        String tags = "";
+        for (Object s : tagList) {
+            tags += s;
+            tags += ";";
+        }
+        return tags;
     }
     
     public void createOrResetTables()   {

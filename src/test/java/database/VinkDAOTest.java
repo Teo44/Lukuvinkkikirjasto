@@ -44,4 +44,17 @@ public class VinkDAOTest {
         ArrayList<Vink> vinks = dao.getAllVinks();
         assertEquals(0, vinks.size());
     }
+    
+    @Test
+    public void aVinkCanBeUpdated()  {
+        ArrayList<String> tags = new ArrayList<>();
+        tags.add("tag 1");
+        tags.add("tag 2");
+        Vink vink = new Vink("headline", "youtube_video", tags, "a comment", 1);
+        dao.addVink(vink);
+        vink.setHeadline("a new headline");
+        dao.updateVink(vink);
+        ArrayList<Vink> vinks = dao.getAllVinks();
+        assertEquals("a new headline", vinks.get(0).getHeadline());
+    }
 }

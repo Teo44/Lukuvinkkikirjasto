@@ -20,6 +20,11 @@ public class TestMain {
         Vink vink = new Vink("test", "testType", test, "a comment");
         dao.addVink(vink);
         ArrayList<Vink> vinks = dao.getAllVinks();
-        System.out.println(vinks.get(0).getDatabaseID());
+        System.out.println(vinks.get(0).getHeadline());
+        vink.setDatabaseID(1);
+        vink.setHeadline("edited headline test");
+        boolean abc = dao.updateVink(vink);
+        System.out.println(abc);
+        System.out.println(vinks.get(0).getHeadline());
     }
 }
