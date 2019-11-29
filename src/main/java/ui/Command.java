@@ -17,7 +17,7 @@ public abstract class Command {
     public abstract void handleCommand();
     
     protected void printSupportedCommands() {
-        io.print("Supported commands: [new, list, delete, quit]");
+        io.print("Supported commands: [new, list, delete, modify, quit]");
     }
     
     protected void printError(String error) {
