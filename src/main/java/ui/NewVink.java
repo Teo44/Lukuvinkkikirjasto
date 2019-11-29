@@ -16,8 +16,9 @@ public class NewVink extends Command {
         String type = io.askUser("Type");
         ArrayList<String> tags = askForTags();
         String comment = io.askUser("Comment");
+        String link = io.askUser("Link");
 
-        boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment);
+        boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment, link);
 
         if (vinkCreatedSuccesfully) {
             io.print("Vink created!");

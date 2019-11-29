@@ -15,9 +15,9 @@ public class Logic {
         vinkDao.createTablesIfNotExist();
     }
     
-    public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment) {
+    public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link) {
         ArrayList<String> uniqueTags = deleteDuplicates(tags);
-        Vink vink = new Vink(headline, type, uniqueTags, comment);
+        Vink vink = new Vink(headline, type, uniqueTags, comment, link);
         
         vinkDao.addVink(vink);
         return true;                        //returns true if the saving was successfull

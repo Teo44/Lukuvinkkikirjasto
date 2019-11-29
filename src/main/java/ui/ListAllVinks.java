@@ -21,6 +21,9 @@ public class ListAllVinks extends Command {
             io.print("Tags: ");
             v.getTags().forEach(t -> io.print(" " + t));
             io.print("Comment: " + v.getComment());
+            if (!(v.getComment().equals("")))   {
+                io.print("Link: " + v.getComment());
+            }
         });
     }
     

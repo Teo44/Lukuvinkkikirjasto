@@ -27,7 +27,7 @@ public class VinkDAOTest {
         ArrayList<String> tags = new ArrayList<>();
         tags.add("tag 1");
         tags.add("tag 2");
-        Vink vink = new Vink("headline", "youtube_video", tags, "a comment");
+        Vink vink = new Vink("headline", "youtube_video", tags, "a comment", "");
         dao.addVink(vink);
         ArrayList<Vink> vinks = dao.getAllVinks();
         assertEquals("headline", vinks.get(0).getHeadline());
@@ -38,7 +38,7 @@ public class VinkDAOTest {
         ArrayList<String> tags = new ArrayList<>();
         tags.add("tag 1");
         tags.add("tag 2");
-        Vink vink = new Vink("headline", "youtube_video", tags, "a comment");
+        Vink vink = new Vink("headline", "youtube_video", tags, "a comment", "");
         dao.addVink(vink);
         dao.deleteVink(1);
         ArrayList<Vink> vinks = dao.getAllVinks();
@@ -50,7 +50,7 @@ public class VinkDAOTest {
         ArrayList<String> tags = new ArrayList<>();
         tags.add("tag 1");
         tags.add("tag 2");
-        Vink vink = new Vink("headline", "youtube_video", tags, "a comment", 1);
+        Vink vink = new Vink("headline", "youtube_video", tags, "a comment", "", 1);
         dao.addVink(vink);
         vink.setHeadline("a new headline");
         dao.updateVink(vink);

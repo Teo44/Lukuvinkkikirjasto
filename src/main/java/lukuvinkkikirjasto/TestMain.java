@@ -17,7 +17,7 @@ public class TestMain {
         dao.createOrResetTables();
         ArrayList<String> test = new ArrayList<>();
         test.add("123");
-        Vink vink = new Vink("test", "testType", test, "a comment");
+        Vink vink = new Vink("test", "testType", test, "a comment", "");
         dao.addVink(vink);
         ArrayList<Vink> vinks = dao.getAllVinks();
         System.out.println(vinks.get(0).getHeadline());

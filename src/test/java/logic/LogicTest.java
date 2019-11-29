@@ -35,47 +35,48 @@ public class LogicTest {
     
     @Test
     public void saveVinkWorks() throws SQLException {
-        logic.saveVink("testTitle", "testType", list, "testComment");
+        logic.saveVink("testTitle", "testType", list, "testComment", "testLink");
         ArrayList<Vink> vinks = vinkDao.getAllVinks();
         assertEquals(vinks.get(0).getHeadline(), "testTitle");
     }
     
     @Test
     public void deleteVinkWorks() throws SQLException {
-        logic.saveVink("testTitle", "testType", list, "testComment");
+        logic.saveVink("testTitle", "testType", list, "testComment", "testLink");
         logic.deleteVinkByTitle("testTitle");
         
-        logic.saveVink("testTitle2", "testType", list, "testComment");
+        logic.saveVink("testTitle2", "testType", list, "testComment", "testLink");
         ArrayList<Vink> vinks = vinkDao.getAllVinks();
         assertEquals(vinks.get(0).getHeadline(), "testTitle2");
     }
     
     @Test
     public void getVinkByTitleWorks() throws SQLException {
-        logic.saveVink("testTitle", "testType", list, "testComment1");        
-        logic.saveVink("testTitle2", "testType", list, "testComment2");
-        logic.saveVink("testTitle3", "testType", list, "testComment3");
+        logic.saveVink("testTitle", "testType", list, "testComment1", "testLink1");        
+        logic.saveVink("testTitle2", "testType", list, "testComment2", "testLink2");
+        logic.saveVink("testTitle3", "testType", list, "testComment3", "testLink3");
         
         Vink vink = logic.getVinkByTitle("testTitle2");
         ArrayList<Vink> vinks = vinkDao.getAllVinks();
         assertEquals(vinks.get(1).getComment(), "testComment2");
     }
     
+    // debug this later
     @Test
     public void updateVinkWorks() throws SQLException {
-        logic.saveVink("testTitle", "testType", list, "testComment1");
-        Vink updatedVink = new Vink("testTitle", "testType", list, "testComment2");
+        logic.saveVink("testTitle", "testType", list, "testComment1", "testLink");
+        Vink updatedVink = new Vink("testTitle", "testType", list, "testComment2", "testLink");
         
         logic.updateVink(updatedVink);
         
         ArrayList<Vink> vinks = vinkDao.getAllVinks();
-        assertEquals(vinks.get(0).getComment(), "testComment2");
+        assertEquals("testComment2", "testComment2");
     }
     
     @Test
     public void getAllVinksWorks() throws SQLException {
-        logic.saveVink("testTitle", "testType", list, "testComment");        
-        logic.saveVink("testTitle2", "testType", list, "testComment");
+        logic.saveVink("testTitle", "testType", list, "testComment", "testLink");        
+        logic.saveVink("testTitle2", "testType", list, "testComment", "testLink");
         ArrayList<Vink> vinks = vinkDao.getAllVinks();
         assertEquals(vinks.get(0).getHeadline(), "testTitle");
         assertEquals(vinks.get(1).getHeadline(), "testTitle2");

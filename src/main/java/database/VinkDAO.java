@@ -30,12 +30,13 @@ public class VinkDAO {
                 String type = rs.getString("type");
                 String tagsAsString = rs.getString("tags");
                 String comment = rs.getString("comment");
+                String link = rs.getString("link");
                 ArrayList<String> tags = new ArrayList<>();
                 String[] splitTag = tagsAsString.split(";");
                 for (int i = 0; i < splitTag.length; i++) {
                     tags.add(splitTag[i]);
                 }
-                vinks.add(new Vink(headline, type, tags, comment, databaseID));
+                vinks.add(new Vink(headline, type, tags, comment, link, databaseID));
             }
             rs.close();
             stmt.close();
@@ -51,18 +52,18 @@ public class VinkDAO {
             Connection connection = DriverManager.getConnection(
                     "jdbc:sqlite:./" + dbFileName, "sa", "");
             PreparedStatement stmt = connection.prepareStatement("UPDATE Vink "
-                    + "SET headline = ?, type = ?, tags = ?, comment = ?"
+                    + "SET headline = ?, type = ?, tags = ?, comment = ?, link = ?"
                     + "WHERE id = ?");
             stmt.setString(1, updatedVink.getHeadline());
             stmt.setString(2, updatedVink.getType());
             stmt.setString(3, tagListToString(updatedVink.getTags()));
             stmt.setString(4, updatedVink.getComment());
-            stmt.setInt(5, updatedVink.getDatabaseID());
+            stmt.setString(5, updatedVink.getLink());
+            stmt.setInt(6, updatedVink.getDatabaseID());
             int modified = stmt.executeUpdate();
             if (modified == 0)  {
                 return false;
             }
-            System.out.println("dao: " + updatedVink.getHeadline());
             stmt.close();
             connection.close();
             return true;
@@ -104,11 +105,12 @@ public class VinkDAO {
             Connection connection = DriverManager.getConnection(
                     "jdbc:sqlite:./" + dbFileName, "sa", "");
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Vink("
-                    + "headline, type, tags, comment) VALUES (?, ?, ?, ?)");
+                    + "headline, type, tags, comment, link) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, vink.getHeadline());
             stmt.setString(2, vink.getType());
             stmt.setString(3, tags);
             stmt.setString(4, vink.getComment());
+            stmt.setString(5, vink.getLink());
             stmt.executeUpdate();
 
             stmt.close();
@@ -126,7 +128,8 @@ public class VinkDAO {
                     + "headline varchar(144),\n"
                     + "type varchar(64),\n"
                     + "tags varchar(144),\n"
-                    + "comment varchar(144)\n"
+                    + "comment varchar(144),\n"
+                    + "link varchar(144)\n"
                     + ");");
             statement.execute();
 
