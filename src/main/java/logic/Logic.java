@@ -16,7 +16,8 @@ public class Logic {
     }
     
     public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment) {
-        Vink vink = new Vink(headline, type, tags, comment);
+        ArrayList<String> uniqueTags = deleteDuplicates(tags);
+        Vink vink = new Vink(headline, type, uniqueTags, comment);
         
         vinkDao.addVink(vink);
         return true;                        //returns true if the saving was successfull
@@ -34,7 +35,7 @@ public class Logic {
     }
     
     public boolean updateVink(Vink vink) {
-        boolean successful = vinkDao.updateVink(vink.getDatabaseID(), vink);
+        boolean successful = vinkDao.updateVink(vink);
         if (successful) {
             return true;
         }
