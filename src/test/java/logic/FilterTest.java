@@ -37,7 +37,7 @@ public class FilterTest {
     
     @Test
     public void filteringWorks() {
-        ArrayList<Vink> filteredList = filter.filter(vinkList, "kommentti");
+        ArrayList<Vink> filteredList = filter.filterByString(vinkList, "kommentti");
         assertEquals(2, filteredList.size());        
     }
 

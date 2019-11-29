@@ -9,10 +9,12 @@ import java.util.Set;
 
 public class Logic {
     private VinkDAO vinkDao;
+    private Filter filter;
     
     public Logic(VinkDAO vinkDao) {
         this.vinkDao = vinkDao;
         vinkDao.createTablesIfNotExist();
+        filter = new Filter();
     }
     
     public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link) {
@@ -53,6 +55,11 @@ public class Logic {
             }
         }
         return false;
+    }
+    
+    public ArrayList<Vink> filterByString(String string) {
+        ArrayList<Vink> vinkList = getAllVinks();
+        return filter.filterByString(vinkList, string);
     }
     
     private ArrayList<String> deleteDuplicates(ArrayList<String> list) {

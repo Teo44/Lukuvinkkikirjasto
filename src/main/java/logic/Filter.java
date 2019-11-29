@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Filter {
     
-    public ArrayList<Vink> filter(ArrayList<Vink> vinks, String string) {
+    public ArrayList<Vink> filterByString(ArrayList<Vink> vinks, String string) {
         ArrayList<Vink> filteredList = new ArrayList<>();
         
         for (int i = 0; i < vinks.size(); i++) {
