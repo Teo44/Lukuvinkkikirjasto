@@ -1,5 +1,7 @@
 # Lukuvinkkikirjasto
 
+[![CircleCI](https://circleci.com/gh/Teo44/Lukuvinkkikirjasto.svg?style=svg)](https://circleci.com/gh/Teo44/Lukuvinkkikirjasto)
+
 ### Documentation
 #### Definition of done
   * Task code implemented
