@@ -66,7 +66,7 @@ public class LogicTest {
     public void updateVinkWorks() throws SQLException {
         logic.saveVink("testTitle", "testType", list, "testComment1", "testLink");
         
-        logic.updateVink("testTitle", "testType", list, "testComment2", "testLink");
+        logic.updateVink(1, "testTitle", "testType", list, "testComment2", "testLink");
         
         ArrayList<Vink> vinks = vinkDao.getAllVinks();
         assertEquals("testComment2", "testComment2");
