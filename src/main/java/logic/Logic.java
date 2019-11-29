@@ -34,8 +34,8 @@ public class Logic {
         return null;
     }
     
-    public boolean updateVink(String headline, String type, ArrayList<String> tags, String comment, String link) {
-        Vink vink = new Vink(headline, type, tags, comment, link);
+    public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link) {
+        Vink vink = new Vink(headline, type, tags, comment, link, id);
         boolean successful = vinkDao.updateVink(vink);
         if (successful) {
             return true;
