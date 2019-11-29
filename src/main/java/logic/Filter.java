@@ -18,8 +18,10 @@ public class Filter {
             }
             
             for (int j = 0; j < vinks.get(i).getTags().size(); j++) {
-                filteredList.add(vinks.get(i));
-                break;
+                if (vinks.get(i).getTags().contains(string)) {
+                    filteredList.add(vinks.get(i));
+                    break;
+                }
             }
             
         }

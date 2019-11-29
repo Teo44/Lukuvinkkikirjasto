@@ -6,17 +6,17 @@ import static org.junit.Assert.*;
 
 import domain.Vink;
 import java.util.ArrayList;
-import static logic.LogicTest.list;
-import org.junit.Before;
 
 public class FilterTest {
     
     static Filter filter;
     static ArrayList<String> list;
-    ArrayList<Vink> vinkList = new ArrayList<>();
+    static ArrayList<Vink> vinkList;
 
     @BeforeClass
     public static void setUp() {
+        vinkList = new ArrayList<>();
+        filter = new Filter();
         list = new ArrayList<>();
         list.add("test1");
         list.add("test2");
@@ -25,13 +25,20 @@ public class FilterTest {
         Vink vink1 = new Vink("testTitle", "testType", list, "testComment1", "testLink");
         Vink vink2 = new Vink("testTitle2", "testType2", list, "testComment2", "testLink2");
         Vink vink3 = new Vink("testTitle", "testType", list, "testComment1", "testLink");
-        //Vink vink = new Vink("testTitle")
+        Vink vink4 = new Vink("testTitle", "testType", list, "testikommentti", "testLink");
+        Vink vink5 = new Vink("testTitle", "tyyppi", list, "kommentti", "testLink");
+        vinkList.add(vink1);
+        vinkList.add(vink2);
+        vinkList.add(vink3);
+        vinkList.add(vink4);
+        vinkList.add(vink5);
+        
     }
     
     @Test
     public void filteringWorks() {
-        ArrayList<Vink> filteredList = filter.filter(vinkList, "test");
-        
+        ArrayList<Vink> filteredList = filter.filter(vinkList, "kommentti");
+        assertEquals(2, filteredList.size());        
     }
 
 }
