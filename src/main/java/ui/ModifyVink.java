@@ -39,16 +39,26 @@ public class ModifyVink extends Command {
         String updatedLink = io.askUser(" Updated link");
         
         ArrayList<String> updatedTags = new ArrayList<>();
+        String updatedTag = "";
+        
         for (String tag : tags) {
             io.print(" Old tag: " + tag);
-            String updatedTag = io.askUser(" Updated tag");
+            updatedTag = io.askUser(" Updated tag");
             if (updatedTag.isEmpty()) {
                 updatedTags.add(tag);
             } else {
                 updatedTags.add(updatedTag);
             }
-            
         }
+        
+        while (true) {
+            updatedTag = io.askUser(" Add new tag");
+            if (updatedTag.isEmpty()) {
+                break;
+            }
+            updatedTags.add(updatedTag);
+        }
+        
         title = updatedTitle.isEmpty() ? title : updatedTitle;
         type = updatedType.isEmpty() ? type : updatedType;
         comment = updatedComment.isEmpty() ? comment : updatedComment;
