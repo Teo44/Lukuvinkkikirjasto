@@ -30,8 +30,24 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 
 ### Usage
 ### Contributing
+### Releases
+...Coming next week...  
+
 #### Gradle
+After cloning this repository you can run the project with running  
+```
+./gradlew run -q --plain console
+```
+Tests can be run with  
+```
+./gradlew test  
+```
+Jacoco testreport can be generated with
+```
+./gradlew jacocoTestReport
+```
+
 ...ADD contributing and usage...  
-ADD contributing info (after lincense)  
+ADD contributing info (after license)
 ### License
 [MIT-License](https://github.com/Teo44/Lukuvinkkikirjasto/blob/master/LICENSE)
