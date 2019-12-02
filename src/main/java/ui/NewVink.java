@@ -21,6 +21,7 @@ public class NewVink extends Command {
         boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment, link);
 
         if (vinkCreatedSuccesfully) {
+            io.print("");
             io.print("Vink created!");
         } else {
             printError("add new vink");

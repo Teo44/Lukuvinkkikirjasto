@@ -23,7 +23,8 @@ public class ModifyVink extends Command {
         
         io.print("");
         io.print("Modifying vink, you can either enter a modified value for eatch field or keep the old one with an empty line");
-
+        io.print("");
+        
         Integer id = v.getDatabaseID();
         title = v.getHeadline();
         String type = v.getType();
@@ -32,16 +33,16 @@ public class ModifyVink extends Command {
         String link = v.getLink();
         
         io.print("Old title: " + title);
-        String updatedTitle = io.askUser(" New title");
+        String updatedTitle = io.askUser("  New title");
         io.print("Old type: " + type);
-        String updatedType = io.askUser(" Updated type");
-        io.print("Old comment: " + comment);
-        String updatedComment = io.askUser(" Updated comment");
+        String updatedType = io.askUser("  Updated type");
         
         ArrayList<String> updatedTags = modifyTags(tags);
         
+        io.print("Old comment: " + comment);
+        String updatedComment = io.askUser("  Updated comment");
         io.print("Old link: " + link);
-        String updatedLink = io.askUser(" Updated link");
+        String updatedLink = io.askUser("  Updated link");
         
         title = updatedTitle.isEmpty() ? title : updatedTitle;
         type = updatedType.isEmpty() ? type : updatedType;
@@ -51,8 +52,10 @@ public class ModifyVink extends Command {
         boolean updatedSuccesfully = logic.updateVink(id, title, type, updatedTags, comment, link);
         
         if (updatedSuccesfully) {
+            io.print("");
             io.print("Vink updated succesfully!");
         } else {
+            io.print("");
             printError("modify vink with title :" + title);
         }
         
@@ -63,8 +66,8 @@ public class ModifyVink extends Command {
         String updatedTag = null;
         
         for (String tag : tags) {
-            io.print(" Old tag: " + tag);
-            updatedTag = io.askUser(" Updated tag");
+            io.print("Old tag: " + tag);
+            updatedTag = io.askUser("  Updated tag");
             if (updatedTag.isEmpty()) {
                 updatedTags.add(tag);
             } else {
@@ -72,9 +75,9 @@ public class ModifyVink extends Command {
             }
         }
         
-        io.print("");
-        io.print("Add new tags to vink");
-        io.print("--------------------");
+//        io.print("");
+//        io.print("Add new tags to vink");
+//        io.print("--------------------");
         
         updatedTags.addAll(askForTags());
         

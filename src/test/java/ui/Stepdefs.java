@@ -93,7 +93,6 @@ public class Stepdefs {
         inputLines.add(headline);
         inputLines.add("");
         inputLines.add("");
-        inputLines.add("");
         inputLines.add(tagi1);
         inputLines.add(tagi2);
         inputLines.add("");

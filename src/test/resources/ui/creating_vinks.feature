@@ -28,6 +28,8 @@ Feature: User can create vinks
         When  headline "Olematon" is selected
         Then  system will respond with "Something went wrong when trying to delete vink, try again!"
 
+
     Scenario: user cannot use un supported commands
         Given command nonexistant is selected
         Then  system will respond with "Unrecognized command" 
+
