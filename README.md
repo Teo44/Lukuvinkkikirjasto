@@ -34,4 +34,4 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 ...ADD contributing and usage...  
 ADD contributing info (after lincense)  
 ### License
-ADD license!  
+[![MIT-License](https://https://github.com/Teo44/Lukuvinkkikirjasto/blob/master/LICENSE)]
