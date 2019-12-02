@@ -14,7 +14,7 @@ Feature: User can create vinks
     Scenario: user can modify a vink
         Given command modify is selected
         When  headline "Testi" and new tags "uusitagi1" and "uusitagi2" are selected
-        Then  system will respond with "Vink updated succesfully!"
+        Then  system will respond with list "Testi" , "testiTyyppi" , "testitagi1, uusitagi1, uusitagi2" , "testi komeentti" , "https://testilinkki.com"
 
 
     Scenario: user can delete a vink
