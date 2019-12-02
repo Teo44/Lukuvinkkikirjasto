@@ -47,6 +47,11 @@ public class Stepdefs {
         text = new Textual(logic, io);
         text.run();
     }
+    
+    @Given("^command modify is selected")
+    public void commandModifyIsSelected() {
+        inputLines.add("modify");
+    }
 
     @When("headline {string} and type {string} and tags {string} and comment {string} and link {string} is selected")
     public void newVinkInfoEntered(String headline, String type, String tags, String comment, String link) {
@@ -72,6 +77,24 @@ public class Stepdefs {
         text = new Textual(logic, io);
         text.run();
     }
+    
+    @When("headline {string} and new tags {string} and {string} are selected")
+    public void newTagsAreSelected(String headline, String tagi1, String tagi2) {
+        inputLines.add(headline);
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add(tagi1);
+        inputLines.add(tagi2);
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
+    }
    
     
     @Then("system will respond with {string}")
@@ -90,4 +113,5 @@ public class Stepdefs {
         vink.add("Link: " + e5);
         assertTrue(io.getPrints().containsAll(vink));
     }
+    
 }
