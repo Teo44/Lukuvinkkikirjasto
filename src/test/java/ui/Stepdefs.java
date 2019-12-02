@@ -52,6 +52,16 @@ public class Stepdefs {
     public void commandModifyIsSelected() {
         inputLines.add("modify");
     }
+    
+    @Given("^command nonexistant is selected")
+    public void commandNonexistantIsSelected() {
+        inputLines.add("nonexistant");
+        inputLines.add("quit");
+                
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();  
+    }
 
     @When("headline {string} and type {string} and tags {string} and comment {string} and link {string} is selected")
     public void newVinkInfoEntered(String headline, String type, String tags, String comment, String link) {
