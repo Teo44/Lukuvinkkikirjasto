@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import domain.Vink;
-import database.VinkDAO;
+import database.VinkDAOSqlite;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import logic.Logic;
@@ -14,12 +14,12 @@ import org.junit.Before;
 public class LogicTest {
     
     static Logic logic;
-    static VinkDAO vinkDao;
+    static VinkDAOSqlite vinkDao;
     static ArrayList<String> list;
 
     @BeforeClass
     public static void setUp() {
-        vinkDao = new VinkDAO("logicTestDatabase.db");
+        vinkDao = new VinkDAOSqlite("logicTestDatabase.db");
         logic = new Logic(vinkDao);
         list = new ArrayList<>();
         list.add("test1");
