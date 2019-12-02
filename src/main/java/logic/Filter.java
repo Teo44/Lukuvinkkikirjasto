@@ -12,7 +12,6 @@ public class Filter {
         ArrayList<Vink> filteredList = new ArrayList<>();
 
         for (int i = 0; i < vinks.size(); i++) {
-            Vink originalVink = vinks.get(i);
             boolean modified = false;
 
             if (vinks.get(i).getHeadline().contains(string)) {
