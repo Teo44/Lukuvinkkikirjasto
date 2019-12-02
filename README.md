@@ -5,7 +5,7 @@ books, videos and such to later come back to. The goal of Lukuvinkkikirjasto is
 to replace messy browser bookmarks with a system that offers more functionality 
 and ease of use. 
 
-Currently users can save, browser, edit and delete vinks (reading tips) locally 
+Currently users can save, browser, edit, filter and delete vinks (reading tips) locally 
 through a text-based interface. Each vink can have a headline, type, comment, a link and a list of tags. Vinks can also be searched based on these attributes.
 
 
@@ -31,10 +31,7 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 [v0.1](https://github.com/Teo44/Lukuvinkkikirjasto/releases/tag/v0.1)  
 ### Installation
 
-
 ### Contributing
-### Releases
-...Coming next week...  
 
 ### Usage
 #### Gradle
