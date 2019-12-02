@@ -28,6 +28,7 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 [Project documents](https://drive.google.com/drive/folders/1vjlllWe4OPGp9iqdESAkCbsBWRAaRfYo?usp=sharing)  
 [CircleCI](https://circleci.com/gh/Teo44/Lukuvinkkikirjasto)  
 ### Release
+[v0.1](https://github.com/Teo44/Lukuvinkkikirjasto/releases/tag/v0.1)  
 ### Installation
 
 
