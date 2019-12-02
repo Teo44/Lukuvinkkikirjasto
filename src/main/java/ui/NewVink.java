@@ -27,22 +27,4 @@ public class NewVink extends Command {
         }
     }
     
-    private ArrayList<String> askForTags() {
-        ArrayList<String> tags = new ArrayList<>();
-        String tag = "";
-        
-        io.print("Enter tags, one per line. Empty string ends.");
-        
-        while (true) {
-            tag = io.askUser(" Give tag");
-            if (tag.isEmpty()) {
-                break;
-            }
-            
-            tags.add(tag);
-        }
-        
-        return tags;
-    }
-    
 }

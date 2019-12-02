@@ -24,4 +24,22 @@ public abstract class Command {
         io.print("Something went wrong when trying to " + error + ", try again!");
     }
     
+    protected ArrayList<String> askForTags() {
+        ArrayList<String> tags = new ArrayList<>();
+        String tag = "";
+        
+        io.print("Enter tags, one per line. Empty string ends.");
+        
+        while (true) {
+            tag = io.askUser(" Give tag");
+            if (tag.isEmpty()) {
+                break;
+            }
+            
+            tags.add(tag);
+        }
+        
+        return tags;
+    }
+    
 }

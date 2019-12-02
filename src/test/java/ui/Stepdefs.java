@@ -1,7 +1,7 @@
 
 package ui;
 
-import database.VinkDAO;
+import database.VinkDAOSqlite;
 import domain.Vink;
 import io.StubIO;
 import io.cucumber.java.Before;
@@ -16,14 +16,14 @@ import static org.junit.Assert.*;
 
 public class Stepdefs {  
     Textual text;
-    VinkDAO dao;
+    VinkDAOSqlite dao;
     Logic logic;
     StubIO io;
     List<String> inputLines;
     
     @Before
     public void setup() {
-        dao = new VinkDAO("test.db");
+        dao = new VinkDAOSqlite("test.db");
         logic = new Logic(dao);
         inputLines = new ArrayList<>();
     }
@@ -46,6 +46,21 @@ public class Stepdefs {
         io = new StubIO(inputLines);
         text = new Textual(logic, io);
         text.run();
+    }
+    
+    @Given("^command modify is selected")
+    public void commandModifyIsSelected() {
+        inputLines.add("modify");
+    }
+    
+    @Given("^command nonexistant is selected")
+    public void commandNonexistantIsSelected() {
+        inputLines.add("nonexistant");
+        inputLines.add("quit");
+                
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();  
     }
 
     @When("headline {string} and type {string} and tags {string} and comment {string} and link {string} is selected")
@@ -72,6 +87,24 @@ public class Stepdefs {
         text = new Textual(logic, io);
         text.run();
     }
+    
+    @When("headline {string} and new tags {string} and {string} are selected")
+    public void newTagsAreSelected(String headline, String tagi1, String tagi2) {
+        inputLines.add(headline);
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add(tagi1);
+        inputLines.add(tagi2);
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add("");
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
+    }
    
     
     @Then("system will respond with {string}")
@@ -90,4 +123,5 @@ public class Stepdefs {
         vink.add("Link: " + e5);
         assertTrue(io.getPrints().containsAll(vink));
     }
+    
 }

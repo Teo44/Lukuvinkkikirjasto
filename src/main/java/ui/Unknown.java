@@ -11,8 +11,7 @@ public class Unknown extends Command {
 
     @Override
     public void handleCommand() {
-        io.print("Unrecognized Command");
-        printSupportedCommands();
+        io.print("Unrecognized command");
     }
     
 }

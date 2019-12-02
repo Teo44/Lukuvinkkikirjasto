@@ -1,8 +1,7 @@
 package logic;
 
-import domain.Vink;
 import database.VinkDAO;
-
+import domain.Vink;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
