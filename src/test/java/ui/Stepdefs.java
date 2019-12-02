@@ -1,7 +1,7 @@
 
 package ui;
 
-import database.VinkDAO;
+import database.VinkDAOSqlite;
 import domain.Vink;
 import io.StubIO;
 import io.cucumber.java.Before;
@@ -16,14 +16,14 @@ import static org.junit.Assert.*;
 
 public class Stepdefs {  
     Textual text;
-    VinkDAO dao;
+    VinkDAOSqlite dao;
     Logic logic;
     StubIO io;
     List<String> inputLines;
     
     @Before
     public void setup() {
-        dao = new VinkDAO("test.db");
+        dao = new VinkDAOSqlite("test.db");
         logic = new Logic(dao);
         inputLines = new ArrayList<>();
     }

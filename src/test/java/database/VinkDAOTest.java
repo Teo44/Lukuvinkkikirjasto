@@ -10,12 +10,12 @@ import org.junit.Test;
 
 public class VinkDAOTest {
     
-    static VinkDAO dao;
+    static VinkDAOSqlite dao;
     static Vink vink;
     
     @BeforeClass
     public static void setUp()  {
-        dao = new VinkDAO("test.db");
+        dao = new VinkDAOSqlite("test.db");
         dao.createOrResetTables();
     }
     
