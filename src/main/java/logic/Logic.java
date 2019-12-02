@@ -38,11 +38,8 @@ public class Logic {
     
     public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link) {
         Vink vink = new Vink(headline, type, tags, comment, link, id);
-        boolean successful = vinkDao.updateVink(vink);
-        if (successful) {
-            return true;
-        }
-        return false;
+        
+        return vinkDao.updateVink(vink);
     }
     
 
@@ -59,7 +56,7 @@ public class Logic {
     
     public ArrayList<Vink> filterByString(String string) {
         ArrayList<Vink> vinkList = getAllVinks();
-        return filter.filterByString(vinkList, string);
+        return filter.getFilteredColorisedList(vinkList, string);
     }
     
     private ArrayList<String> deleteDuplicates(ArrayList<String> list) {
