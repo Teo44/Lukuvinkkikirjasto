@@ -43,7 +43,10 @@ mainClassName = 'lukuvinkkikirjasto.Main'
 jar {
     manifest {
         attributes 'Main-Class': 'lukuvinkkikirjasto.Main'
-    }
+    } 
+	from {
+    	configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  	}
 }
 
 run {
