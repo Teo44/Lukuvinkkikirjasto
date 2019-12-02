@@ -27,12 +27,11 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 ### Installation
 
 
-
-### Usage
 ### Contributing
 ### Releases
 ...Coming next week...  
 
+### Usage
 #### Gradle
 After cloning this repository you can run the project with running  
 ```
