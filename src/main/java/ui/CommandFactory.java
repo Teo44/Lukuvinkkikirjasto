@@ -15,6 +15,7 @@ public class CommandFactory {
         this.supportedCommands.put("list", new ListAllVinks(io, logic));
         this.supportedCommands.put("delete", new DeleteVink(io, logic));
         this.supportedCommands.put("modify", new ModifyVink(io, logic));
+        this.supportedCommands.put("filter", new FilterVinks(io, logic));
         this.unknown = new Unknown(io, logic);
     }
     
