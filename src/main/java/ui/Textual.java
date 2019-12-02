@@ -1,6 +1,5 @@
 package ui;
 
-import java.util.ArrayList;
 import logic.Logic;
 import io.IO;
 
