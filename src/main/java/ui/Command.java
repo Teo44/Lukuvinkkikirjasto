@@ -17,6 +17,8 @@ public abstract class Command {
     public abstract void handleCommand();
     
     protected void printSupportedCommands() {
+        io.print("------------------------------");
+        io.print("");
         io.print("Supported commands: [new, list, delete, modify, quit]");
     }
     
@@ -31,7 +33,7 @@ public abstract class Command {
         io.print("Enter tags, one per line. Empty string ends.");
         
         while (true) {
-            tag = io.askUser(" Give tag");
+            tag = io.askUser("  Give tag");
             if (tag.isEmpty()) {
                 break;
             }

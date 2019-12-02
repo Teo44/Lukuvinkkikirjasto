@@ -99,6 +99,7 @@ public class Stepdefs {
         inputLines.add("");
         inputLines.add("");
         inputLines.add("");
+        inputLines.add("list");
         inputLines.add("quit");
         
         io = new StubIO(inputLines);
@@ -118,7 +119,7 @@ public class Stepdefs {
         ArrayList vink = new ArrayList<>();
         vink.add("Headline: " + e1);
         vink.add("Type: " + e2);
-        vink.add("-" + e3);
+        vink.add("Tags: " + e3);
         vink.add("Comment: " + e4);
         vink.add("Link: " + e5);
         assertTrue(io.getPrints().containsAll(vink));

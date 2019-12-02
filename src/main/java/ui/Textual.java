@@ -15,12 +15,11 @@ public class Textual {
     
     public void run() {
         io.print("Welcome to Lukuvinkkikirjasto.");
-        io.print("------------------------------");
+        
         
         String command = null;
         
         while (true) {
-            io.print("");
             
             commandFactory.getDefaultObject().printSupportedCommands();
             

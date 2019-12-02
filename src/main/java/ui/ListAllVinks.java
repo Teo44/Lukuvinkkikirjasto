@@ -1,6 +1,7 @@
 package ui;
 
 import io.IO;
+import java.util.ArrayList;
 import logic.Logic;
 
 public class ListAllVinks extends Command {
@@ -12,14 +13,19 @@ public class ListAllVinks extends Command {
     @Override
     public void handleCommand() {
         io.print("All vinks:");
-        io.print("----------");
 
         logic.getAllVinks().forEach(v -> {
-            io.print("");
+            io.print("------------------------------");
             io.print("Headline: " + v.getHeadline());
             io.print("Type: " + v.getType());
-            io.print("Tags: ");
-            v.getTags().forEach(t -> io.print("-" + t));
+            String tagString = new String();
+            for (int i = 0; i < v.getTags().size(); i++) {
+                tagString = tagString + v.getTags().get(i);
+                if (i+1 != v.getTags().size()) {
+                    tagString = tagString + ", ";
+                }
+            }
+            io.print("Tags: " + tagString);
             io.print("Comment: " + v.getComment());
             if (!(v.getLink().equals("")))   {
                 io.print("Link: " + v.getLink());
