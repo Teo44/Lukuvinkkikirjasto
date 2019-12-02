@@ -13,7 +13,7 @@ public class FilterVinks extends Command {
     public void handleCommand() {
         String keyword = io.askUser("Filter by keyword");
 
-        io.print("Filtered vinks::");
+        io.print("Filtered vinks:");
 
         logic.filterByString(keyword).forEach(v -> {
             io.print("------------------------------");

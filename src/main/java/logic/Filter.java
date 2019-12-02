@@ -43,14 +43,10 @@ public class Filter {
 
             for (int j = 0; j < tags.size(); j++) {
                 if (tags.get(j).contains(string)) {
-                    String colorTag = tags.get(i).replaceAll(string, ANSI_YELLOW + string + ANSI_RESET);
-                    coloredTags.add(colorTag);
+                    String colorTag = tags.get(j).replaceAll(string, ANSI_YELLOW + string + ANSI_RESET);
+                    tags.set(j, colorTag);
                     modified = true;
                 }
-            }
-            
-            if (!coloredTags.isEmpty()) {
-                vinks.get(i).setTags(coloredTags);
             }
             
             if (modified) {
