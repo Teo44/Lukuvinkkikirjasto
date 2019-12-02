@@ -2,6 +2,7 @@
 
 ...Short description of the project...  
 [![CircleCI](https://circleci.com/gh/Teo44/Lukuvinkkikirjasto.svg?style=svg)](https://circleci.com/gh/Teo44/Lukuvinkkikirjasto)  
+[![codecov](https://codecov.io/gh/Teo44/Lukuvinkkikirjasto/branch/master/graph/badge.svg)](https://codecov.io/gh/Teo44/Lukuvinkkikirjasto)
 
 ### Documentation
 #### Definition of done
