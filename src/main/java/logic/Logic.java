@@ -2,8 +2,6 @@ package logic;
 
 import database.VinkDAO;
 import domain.Vink;
-import database.VinkDAOSqlite;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +10,7 @@ public class Logic {
     private VinkDAO vinkDao;
     private Filter filter;
     
-    public Logic(VinkDAOSqlite vinkDao) {
+    public Logic(VinkDAO vinkDao) {
         this.vinkDao = vinkDao;
         vinkDao.createTablesIfNotExist();
         filter = new Filter();
