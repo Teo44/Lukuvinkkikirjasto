@@ -5,16 +5,26 @@ import database.VinkDAO;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import org.jline.reader.Completer;
 
 public class Logic {
     private VinkDAO vinkDao;
     private Filter filter;
+    private AutoCompleter autoCompleter;
     
     public Logic(VinkDAO vinkDao) {
         this.vinkDao = vinkDao;
         vinkDao.createTablesIfNotExist();
         filter = new Filter();
+        this.autoCompleter = new AutoCompleter();
     }
+    
+    public Completer getHeadlineCompleter() {
+        ArrayList<Vink> vinks = vinkDao.getAllVinks();
+        return autoCompleter.getHeadlineCompleter(vinks);
+    }
+    
+    
     
     public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link) {
         ArrayList<String> uniqueTags = deleteDuplicates(tags);
