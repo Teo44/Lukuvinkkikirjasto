@@ -53,6 +53,10 @@ public class Stepdefs {
         inputLines.add("modify");
     }
     
+    @Given("^command open is selected")
+    public void commandOpenIsSelected() {
+        inputLines.add("open");
+    }
     @Given("^command nonexistant is selected")
     public void commandNonexistantIsSelected() {
         inputLines.add("nonexistant");
@@ -86,6 +90,7 @@ public class Stepdefs {
         io = new StubIO(inputLines);
         text = new Textual(logic, io);
         text.run();
+        logic.close();
     }
     
     @When("headline {string} and new tags {string} and {string} are selected")

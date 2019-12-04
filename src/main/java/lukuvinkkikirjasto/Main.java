@@ -5,7 +5,7 @@ import ui.Textual;
 import database.VinkDAOSqlite;
 import io.ConsoleIO;
 import io.IO;
-import ui.FancyTerminal;
+
 
 public class Main {
 
@@ -14,12 +14,12 @@ public class Main {
         VinkDAOSqlite vinkDao = new VinkDAOSqlite("vinkDatabase.db"); 
         Logic logic = new Logic(vinkDao);
         
-        //new Textual(logic, io).run();
-        try {
-            new FancyTerminal().run();
-        } catch (Exception e) {
-            System.out.println("errror " + e.getMessage());
-        }
+        new Textual(logic, io).run();
+//        try {
+//            new FancyTerminal().run();
+//        } catch (Exception e) {
+//            System.out.println("errror " + e.getMessage());
+//        }
         
     }
 }
