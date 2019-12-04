@@ -2,7 +2,6 @@ package logic;
 
 import domain.Vink;
 import database.VinkDAO;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,8 +14,7 @@ public class Logic {
         this.vinkDao = vinkDao;
         vinkDao.createTablesIfNotExist();
         filter = new Filter();
-    }
-       
+    }    
     
     public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link) {
         ArrayList<String> uniqueTags = deleteDuplicates(tags);
@@ -37,8 +35,28 @@ public class Logic {
         return null;
     }
     
+    public ArrayList<Vink> getVinksByReadingStatus(Integer readingStatus) {
+        ArrayList<Vink> vinkList = getAllVinks();
+        ArrayList<Vink> newList = new ArrayList<>();
+        
+        for (int i = 0; i < vinkList.size(); i++) {
+            if (vinkList.get(i).getReadingStatus().equals(readingStatus)) {
+                newList.add(vinkList.get(i));
+            }
+        }
+        return newList;
+    }
+    
+    public boolean updateVinkReadingStatus(String headline, Integer newValue) {
+        Vink vink = getVinkByTitle(headline);
+        Vink newVink = new Vink(headline, vink.getType(), vink.getTags(), vink.getComment(), vink.getLink(), newValue, vink.getDatabaseID());
+        
+        return vinkDao.updateVink(newVink);
+    }
+    
     public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link) {
-        Vink vink = new Vink(headline, type, tags, comment, link, id);
+        Vink originalVink = getVinkByTitle(headline);
+        Vink vink = new Vink(headline, type, tags, comment, link, originalVink.getReadingStatus(), id);
         
         return vinkDao.updateVink(vink);
     }

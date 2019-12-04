@@ -30,6 +30,7 @@ public class VinkDAOSqlite implements VinkDAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next())   {
                 Integer databaseID = rs.getInt("id");
+                Integer readingStatus = rs.getInt("readingStatus");
                 String headline = rs.getString("headline");
                 String type = rs.getString("type");
                 String tagsAsString = rs.getString("tags");
@@ -40,7 +41,7 @@ public class VinkDAOSqlite implements VinkDAO {
                 for (int i = 0; i < splitTag.length; i++) {
                     tags.add(splitTag[i]);
                 }
-                vinks.add(new Vink(headline, type, tags, comment, link, databaseID));
+                vinks.add(new Vink(headline, type, tags, comment, link, readingStatus, databaseID));
             }
             rs.close();
             stmt.close();
@@ -112,12 +113,13 @@ public class VinkDAOSqlite implements VinkDAO {
             Connection connection = DriverManager.getConnection(
                     "jdbc:sqlite:./" + dbFileName, "sa", "");
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Vink("
-                    + "headline, type, tags, comment, link) VALUES (?, ?, ?, ?, ?)");
+                    + "headline, type, tags, comment, link, readingStatus) VALUES (?, ?, ?, ?, ?, ?)");
             stmt.setString(1, vink.getHeadline());
             stmt.setString(2, vink.getType());
             stmt.setString(3, tags);
             stmt.setString(4, vink.getComment());
             stmt.setString(5, vink.getLink());
+            stmt.setInt(6, vink.getReadingStatus());
             stmt.executeUpdate();
 
             stmt.close();
@@ -137,7 +139,8 @@ public class VinkDAOSqlite implements VinkDAO {
                     + "type varchar(64),\n"
                     + "tags varchar(144),\n"
                     + "comment varchar(144),\n"
-                    + "link varchar(144)\n"
+                    + "link varchar(144),\n"
+                    + "readingStatus INTEGER\n"
                     + ");");
             statement.execute();
 
