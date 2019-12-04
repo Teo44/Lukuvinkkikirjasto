@@ -90,6 +90,16 @@ public class Stepdefs {
         io = new StubIO(inputLines);
         text = new Textual(logic, io);
         text.run();
+    }
+    
+    @When("headline {string} is selected for opening")
+    public void selecAVinkForOpening(String headline) {
+        inputLines.add(headline);
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
         logic.close();
     }
     

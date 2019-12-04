@@ -18,7 +18,7 @@ Feature: User can create vinks
 
     Scenario: user can open a vink
         Given command open is selected
-        When  headline "Testi" is selected
+        When  headline "Testi" is selected for opening
         Then system will respond with "Vink opened correctly"
 
     Scenario: user can delete a vink
