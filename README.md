@@ -37,7 +37,7 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 #### Gradle
 After cloning this repository you can run the project with running  
 ```
-./gradlew run -q --plain console
+./gradlew -q --console plain run
 ```
 Tests can be run with  
 ```
