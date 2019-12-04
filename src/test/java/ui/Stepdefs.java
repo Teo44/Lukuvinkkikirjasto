@@ -92,16 +92,6 @@ public class Stepdefs {
         text.run();
     }
     
-    @When("headline {string} is selected for opening")
-    public void selecAVinkForOpening(String headline) {
-        inputLines.add(headline);
-        inputLines.add("quit");
-        
-        io = new StubIO(inputLines);
-        text = new Textual(logic, io);
-        text.run();
-        logic.close();
-    }
     
     @When("headline {string} and new tags {string} and {string} are selected")
     public void newTagsAreSelected(String headline, String tagi1, String tagi2) {
