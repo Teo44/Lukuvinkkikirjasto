@@ -17,18 +17,6 @@ public class Logic {
         filter = new Filter();
     }
        
-    static Process p;
-
-    public static void open(String link) throws IOException {
-        p = Runtime.getRuntime().exec(new String[]{
-            "/usr/bin/firefox",
-            "-new-window", link
-        });
-    }
-
-    public void close() {
-        p.destroy();
-    }
     
     public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link) {
         ArrayList<String> uniqueTags = deleteDuplicates(tags);
