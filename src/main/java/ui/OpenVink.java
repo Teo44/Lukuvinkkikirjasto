@@ -10,7 +10,7 @@ import logic.Logic;
 public class OpenVink extends Command {
     
     
-    
+
     public OpenVink(IO io, Logic logic) {
         super(io, logic);
     }
@@ -32,7 +32,6 @@ public class OpenVink extends Command {
             printError("open a vink");
         }
         
-        
     }
 
     private void open(String link) throws IOException {
@@ -45,7 +44,11 @@ public class OpenVink extends Command {
         
         Desktop desktop = Desktop.getDesktop();
         if (file.exists()) { 
+            
             desktop.open(file);
+            io.print("Vink opened correctly");
+        } else if (link.contains("https://")) {
+            desktop.browse(java.net.URI.create(link));
             io.print("Vink opened correctly");
         } else {
             printError("find a path: " + link);

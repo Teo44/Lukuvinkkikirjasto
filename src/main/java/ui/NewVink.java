@@ -13,8 +13,8 @@ public class NewVink extends Command {
     @Override
     public void handleCommand() {
         String title = io.askUser("Title");
-        String author = io.askUser("Author");
         String type = io.askUser("Type");
+        String author = io.askUser("Author");
         ArrayList<String> tags = askForTags();
         String comment = io.askUser("Comment");
         String link = io.askUser("Link");

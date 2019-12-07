@@ -57,6 +57,7 @@ public class Stepdefs {
     public void commandOpenIsSelected() {
         inputLines.add("open");
     }
+    
     @Given("^command nonexistant is selected")
     public void commandNonexistantIsSelected() {
         inputLines.add("nonexistant");
@@ -71,6 +72,7 @@ public class Stepdefs {
     public void newVinkInfoEntered(String headline, String type, String tags, String comment, String link) {
         inputLines.add(headline);
         inputLines.add(type);
+        inputLines.add("");
         inputLines.add(tags);
         inputLines.add("");
         inputLines.add(comment);
@@ -96,6 +98,7 @@ public class Stepdefs {
     @When("headline {string} and new tags {string} and {string} are selected")
     public void newTagsAreSelected(String headline, String tagi1, String tagi2) {
         inputLines.add(headline);
+        inputLines.add("");
         inputLines.add("");
         inputLines.add("");
         inputLines.add("");
@@ -130,4 +133,8 @@ public class Stepdefs {
         assertTrue(io.getPrints().containsAll(vink));
     }
     
+    @Then("system will respond with {string} or {string}")
+    public void systemWillRespondWithOr(String expected1, String expected2) {
+        assertTrue(io.getPrints().contains(expected1) || io.getPrints().contains(expected2));
+    }
 }

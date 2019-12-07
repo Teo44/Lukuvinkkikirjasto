@@ -17,6 +17,12 @@ Feature: User can create vinks
         Then  system will respond with list "Testi" , "testiTyyppi" , "testitagi1, uusitagi1, uusitagi2" , "testi komeentti" , "https://testilinkki.com"
 
 
+    Scenario: user can open a vink
+        Given command open is selected
+        When  headline "Testi" is selected
+        Then  system will respond with "Vink opened correctly" or "Something went wrong when trying to connect to desktop, try again!"
+
+
     Scenario: user can delete a vink
         Given command delete is selected
         When  headline "Testi" is selected
@@ -32,3 +38,5 @@ Feature: User can create vinks
     Scenario: user cannot use un supported commands
         Given command nonexistant is selected
         Then  system will respond with "Unrecognized command" 
+
+
