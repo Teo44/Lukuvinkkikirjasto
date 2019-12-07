@@ -47,7 +47,6 @@ public class OpenVink extends Command {
         
         Desktop desktop = Desktop.getDesktop();
         if (file.exists()) { 
-            
             desktop.open(file);
             io.print("Vink opened correctly");
         } else if (link.contains("https://")) {

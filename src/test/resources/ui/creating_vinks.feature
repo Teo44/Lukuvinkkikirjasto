@@ -1,4 +1,4 @@
-Feature: User can create vinks
+Feature: As a user I want to be able to add a vink to the app so I can find it easily later.
 
     Scenario: user can add a vink
         Given command new is selected
