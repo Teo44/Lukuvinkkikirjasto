@@ -23,7 +23,20 @@ Feature: As a user I want to be able to set ’luettu’, ‘alettu lukemaan’ 
         Then  system will respond with reading progress "[===============               ] 50%" and headline "Harry Potter"
 
 
+    Scenario: user can set book as reading
+        Given command mark is selected
+        When  headline "Harry Potter" and status "3" are selected
+        Then  system will respond with "The reading status of vink Harry Potter has been updated!"
+
+
     Scenario: user can check reading status
         Given command read is selected
-        When  reading status "1" is selected
-        Then  system will respond with reading progress "[                              ] 0%" and headline "Harry Potter"
+        When  reading status "3" is selected
+        Then  system will respond with reading progress "[==============================] 100%" and headline "Harry Potter"
+
+
+    Scenario: user cannot set reading status of books that don't exist
+        Given command mark is selected
+        When  headline "Parry Hotter" and status "3" are selected
+        Then  system will respond with "Invalid title!"
+
