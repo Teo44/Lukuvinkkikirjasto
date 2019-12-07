@@ -9,11 +9,11 @@ public class ProgressBar {
 
     public String getProgressBar(Integer status) {
         if (status.equals(1)) {
-            return("Reading progress: " + ANSI_RED + "[                              ] 0%" + ANSI_RESET);
+            return  ("Reading progress: " + ANSI_RED + "[                              ] 0%" + ANSI_RESET);
         } else if (status.equals(2)) {
-            return("Reading progress: " + ANSI_YELLOW + "[===============               ] 50%" + ANSI_RESET);
+            return  ("Reading progress: " + ANSI_YELLOW + "[===============               ] 50%" + ANSI_RESET);
         } else if (status.equals(3)) {
-            return("Reading progress: " + ANSI_GREEN + "[==============================] 100%" + ANSI_RESET);
+            return  ("Reading progress: " + ANSI_GREEN + "[==============================] 100%" + ANSI_RESET);
         }
         return "";
     }

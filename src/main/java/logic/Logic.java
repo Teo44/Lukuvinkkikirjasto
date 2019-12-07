@@ -29,7 +29,12 @@ public class Logic {
         return saveVink(book[0], "book", new ArrayList<>(), "", "", book[1]);
     }
     
-    public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link, String author) {
+    public boolean saveVink(String headline,
+                            String type,
+                            ArrayList<String> tags,
+                            String comment,
+                            String link,
+                            String author) {
         ArrayList<String> uniqueTags = deleteDuplicates(tags);
         Vink vink = new Vink(headline, type, uniqueTags, comment, link, author);
         
@@ -61,13 +66,36 @@ public class Logic {
     
     public boolean updateVinkReadingStatus(String headline, Integer newValue) {
         Vink vink = getVinkByTitle(headline);
-        Vink newVink = new Vink(headline, vink.getType(), vink.getTags(), vink.getComment(), vink.getLink(), newValue, vink.getAuthor(), vink.getDatabaseID());
+        Vink newVink = new Vink(
+                headline,
+                vink.getType(),
+                vink.getTags(),
+                vink.getComment(),
+                vink.getLink(),
+                newValue,
+                vink.getAuthor(),
+                vink.getDatabaseID());
         
         return vinkDao.updateVink(newVink);
     }
     
-    public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link, String author, Integer readingStatus) {
-        Vink vink = new Vink(headline, type, tags, comment, link, readingStatus, author, id);
+    public boolean updateVink(Integer id,
+                              String headline,
+                              String type,
+                              ArrayList<String> tags,
+                              String comment,
+                              String link,
+                              String author,
+                              Integer readingStatus) {
+        Vink vink = new Vink(
+                headline,
+                type,
+                tags,
+                comment,
+                link,
+                readingStatus,
+                author,
+                id);
         
         return vinkDao.updateVink(vink);
     }
@@ -99,6 +127,5 @@ public class Logic {
     public ArrayList<Vink> getAllVinks() {
         return vinkDao.getAllVinks();
     }
-    
     
 }

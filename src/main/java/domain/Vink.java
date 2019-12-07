@@ -13,7 +13,12 @@ public class Vink {
     private Integer readingStatus;
     private String author;
 
-    public Vink(String headline, String type, ArrayList<String> tags, String comment, String link, String author) {
+    public Vink(String headline,
+                String type,
+                ArrayList<String> tags,
+                String comment,
+                String link,
+                String author) {
         this.headline = headline;
         this.type = type;
         this.tags = tags;
@@ -24,7 +29,14 @@ public class Vink {
         this.author = author;
     }
     
-    public Vink(String headline, String type, ArrayList<String> tags, String comment, String link, Integer readingStatus, String author, Integer ID) {
+    public Vink(String headline,
+                String type,
+                ArrayList<String> tags,
+                String comment,
+                String link,
+                Integer readingStatus,
+                String author,
+                Integer ID) {
         this.headline = headline;
         this.type = type;
         this.tags = tags;

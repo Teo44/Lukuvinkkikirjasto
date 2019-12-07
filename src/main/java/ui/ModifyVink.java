@@ -22,7 +22,8 @@ public class ModifyVink extends Command {
         }
         
         io.print("");
-        io.print("Modifying vink, you can either enter a modified value for eatch field or keep the old one with an empty line");
+        io.print("Modifying vink, you can either enter a modified value " 
+                + "for eatch field, or keep the old one with an empty line");
         io.print("");
         
         Integer id = v.getDatabaseID();
@@ -53,7 +54,15 @@ public class ModifyVink extends Command {
         link = updatedLink.isEmpty() ? link : updatedLink;
         author = updatedAuthor.isEmpty() ? link : updatedLink;
         
-        boolean updatedSuccesfully = logic.updateVink(id, title, type, updatedTags, comment, link, author, v.getReadingStatus());
+        boolean updatedSuccesfully = logic.updateVink(
+                                                id,
+                                                title,
+                                                type,
+                                                updatedTags,
+                                                comment,
+                                                link,
+                                                author,
+                                                v.getReadingStatus());
         
         if (updatedSuccesfully) {
             io.print("");

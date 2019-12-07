@@ -2,7 +2,6 @@ package ui;
 
 import logic.Logic;
 import io.IO;
-import io.Network;
 
 public class Textual {
     

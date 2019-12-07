@@ -10,9 +10,6 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import logic.Logic;
-
 
 public class Network {
     
@@ -54,7 +51,7 @@ public class Network {
         }
         
         JsonObject rootobj = rootJsonObj.getAsJsonObject();
-        JsonObject book = rootobj.getAsJsonObject("ISBN:"+isbn);
+        JsonObject book = rootobj.getAsJsonObject("ISBN:" + isbn);
         
         if (book == null)   {
             return null;

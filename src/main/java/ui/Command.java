@@ -1,7 +1,6 @@
 package ui;
 
 import io.IO;
-import io.Network;
 import java.util.ArrayList;
 import logic.Logic;
 
