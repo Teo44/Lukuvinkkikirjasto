@@ -28,7 +28,7 @@ public class VinkDAOTest {
         ArrayList<String> tags = new ArrayList<>();
         tags.add("tag 1");
         tags.add("tag 2");
-        vink = new Vink("headline", "youtube_video", tags, "a comment", "");
+        vink = new Vink("headline", "youtube_video", tags, "a comment", "", "author");
         dao.addVink(vink);
     }
     
@@ -74,7 +74,7 @@ public class VinkDAOTest {
     @Test
     public void editingNonExistingVinkReturnsFalse()    {
         basicSetup();
-        Vink vink2 = new Vink("headline", "youtube_video", new ArrayList<String>(), "a comment", "");
+        Vink vink2 = new Vink("headline", "youtube_video", new ArrayList<String>(), "a comment", "", "author");
         boolean edited = dao.updateVink(vink2);
         assertFalse(edited);
     }

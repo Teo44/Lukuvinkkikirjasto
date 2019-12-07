@@ -13,12 +13,13 @@ public class NewVink extends Command {
     @Override
     public void handleCommand() {
         String title = io.askUser("Title");
+        String author = io.askUser("Author");
         String type = io.askUser("Type");
         ArrayList<String> tags = askForTags();
         String comment = io.askUser("Comment");
         String link = io.askUser("Link");
-
-        boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment, link);
+        
+        boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment, link, author);
 
         if (vinkCreatedSuccesfully) {
             io.print("");

@@ -31,9 +31,12 @@ public class ModifyVink extends Command {
         ArrayList<String> tags = v.getTags();
         String comment = v.getComment();
         String link = v.getLink();
+        String author = v.getAuthor();
         
         io.print("Old title: " + title);
         String updatedTitle = io.askUser("  New title");
+        io.print("Old author: " + author);
+        String updatedAuthor = io.askUser("  New author");
         io.print("Old type: " + type);
         String updatedType = io.askUser("  Updated type");
         
@@ -48,8 +51,9 @@ public class ModifyVink extends Command {
         type = updatedType.isEmpty() ? type : updatedType;
         comment = updatedComment.isEmpty() ? comment : updatedComment;
         link = updatedLink.isEmpty() ? link : updatedLink;
+        author = updatedAuthor.isEmpty() ? link : updatedLink;
         
-        boolean updatedSuccesfully = logic.updateVink(id, title, type, updatedTags, comment, link);
+        boolean updatedSuccesfully = logic.updateVink(id, title, type, updatedTags, comment, link, author);
         
         if (updatedSuccesfully) {
             io.print("");

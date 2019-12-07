@@ -17,6 +17,9 @@ public class ListAllVinks extends Command {
         logic.getAllVinks().forEach(v -> {
             io.print("------------------------------");
             io.print("Headline: " + v.getHeadline());
+            if (!(v.getAuthor().equals("")))    {
+                io.print("Author: " + v.getAuthor());
+            }
             io.print("Type: " + v.getType());
             String tagString = new String();
             for (int i = 0; i < v.getTags().size(); i++) {

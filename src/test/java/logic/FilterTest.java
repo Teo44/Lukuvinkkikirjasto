@@ -22,11 +22,11 @@ public class FilterTest {
         list.add("test2");
         list.add("test3");
         
-        Vink vink1 = new Vink("testTitle", "testType", list, "testComment1", "testLink");
-        Vink vink2 = new Vink("testTitle2", "testType2", list, "testComment2", "testLink2");
-        Vink vink3 = new Vink("testTitle", "testType", list, "testComment1", "testLink");
-        Vink vink4 = new Vink("testTitle", "testType", list, "testikommentti", "testLink");
-        Vink vink5 = new Vink("testTitle", "tyyppi", list, "kommentti", "testLink");
+        Vink vink1 = new Vink("testTitle", "testType", list, "testComment1", "testLink", "testAuthor");
+        Vink vink2 = new Vink("testTitle2", "testType2", list, "testComment2", "testLink2", "testAuthor2");
+        Vink vink3 = new Vink("testTitle", "testType", list, "testComment1", "testLink", "testAuthor");
+        Vink vink4 = new Vink("testTitle", "testType", list, "testikommentti", "testLink", "testAuthor");
+        Vink vink5 = new Vink("testTitle", "tyyppi", list, "kommentti", "testLink", "testAuthor");
         vinkList.add(vink1);
         vinkList.add(vink2);
         vinkList.add(vink3);
