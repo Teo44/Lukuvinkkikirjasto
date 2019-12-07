@@ -29,12 +29,25 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 [CircleCI](https://circleci.com/gh/Teo44/Lukuvinkkikirjasto)  
 ### Release
 [v0.1](https://github.com/Teo44/Lukuvinkkikirjasto/releases/tag/v0.1)  
-### Installation
-
-### Contributing
 
 ### Usage
+
+Available commands:
+
+* **new**  to create a new vink to the database
+* **list** to list all the vinks in the database
+* **delete** to delete a vink by title
+* **modify** to modify vink's parameters
+* **filter** to search vinks using a keyword
+* **read** to list all the vinks with a particular reading progress
+* **mark** to mark a vink as read or unread
+* **open** to open a document according to a vink's file path
+
+
 #### Gradle
+
+### Installation
+
 After cloning this repository you can run the project with running  
 ```
 ./gradlew -q --console plain run
@@ -46,9 +59,15 @@ Tests can be run with
 Jacoco testreport can be generated with
 ```
 ./gradlew jacocoTestReport
+
 ```
 
-...ADD contributing and usage...  
-ADD contributing info (after license)
+Checkstyle report can be generated with
+```
+./gradlew checkstyleMain
+```
+
+
 ### License
 [MIT-License](https://github.com/Teo44/Lukuvinkkikirjasto/blob/master/LICENSE)
+* 
