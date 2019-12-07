@@ -1,35 +1,19 @@
 package io;
 
-import database.VinkDAO;
-import database.VinkDAOSqlite;
-import domain.Vink;
-import java.util.ArrayList;
-import logic.Logic;
-import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotNull;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class NetworkTest {
     
     static Network network;
-    static Logic logic;
-    static VinkDAO dao;
     
     @BeforeClass
     public static void setUp()  {
-        dao = new VinkDAOSqlite("test.db");
-        logic = new Logic(dao, network);
         network = new Network();
-    }
-    
-    @Before
-    public void resetDatabase()    {
-        dao.createOrResetTables();
     }
     
     @Test
