@@ -1,4 +1,4 @@
-Feature: user can open vinks
+Feature: As a user I want to be able to open files (pdf) from the program
 
     Scenario: user can add a vink
         Given command new is selected
