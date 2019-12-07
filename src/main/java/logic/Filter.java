@@ -19,6 +19,12 @@ public class Filter {
                 vinks.get(i).setHeadline(colorHeadline);
                 modified = true;
             }
+            
+            if (vinks.get(i).getAuthor().contains(string))  {
+                String colorAuthor = vinks.get(i).getAuthor().replaceAll(string, ANSI_GREEN + string + ANSI_RESET);
+                vinks.get(i).setAuthor(colorAuthor);
+                modified = true;
+            }
 
             if (vinks.get(i).getType().contains(string)) {
                 String colorType = vinks.get(i).getType().replaceAll(string, ANSI_GREEN + string + ANSI_RESET);
