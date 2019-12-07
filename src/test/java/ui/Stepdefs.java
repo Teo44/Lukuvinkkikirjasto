@@ -71,6 +71,12 @@ public class Stepdefs {
         inputLines.add("mark");
     }
     
+    @Given("^command new with isbn is selected")
+    public void commandNewWithISBNIsSelected() {
+        inputLines.add("new");
+        inputLines.add("isbn");
+    }
+    
     @Given("^command nonexistant is selected")
     public void commandNonexistantIsSelected() {
         inputLines.add("nonexistant");
@@ -126,6 +132,15 @@ public class Stepdefs {
         text.run();
     }
     
+    @When("isbn {string} is selected")
+    public void slecetAISBN(String isbn) {
+        inputLines.add(isbn);
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
+    }
     
     @When("headline {string} and new tags {string} and {string} are selected")
     public void newTagsAreSelected(String headline, String tagi1, String tagi2) {
@@ -183,6 +198,15 @@ public class Stepdefs {
         vink.add("Comment: " + e4);
         vink.add("Link: " + e5);
         assertTrue(io.getPrints().containsAll(vink));
+    }
+    
+    @Then("system will respond with book {string} , {string} , {string}")
+    public void systemWillRespondWithBook(String title, String type, String author) {
+        ArrayList book = new ArrayList<>();
+        book.add("Headline: " + title);
+        book.add("Type: " + type);
+        book.add("Author: " + author);
+        assertTrue(io.getPrints().containsAll(book));
     }
     
     @Then("system will respond with reading progress {string} and headline {string}")
