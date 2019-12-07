@@ -16,7 +16,8 @@ public class CommandFactory {
         this.supportedCommands.put("delete", new DeleteVink(io, logic));
         this.supportedCommands.put("modify", new ModifyVink(io, logic));
         this.supportedCommands.put("filter", new FilterVinks(io, logic));
-        this.supportedCommands.put("read", new ReadingStatus(io, logic));
+        this.supportedCommands.put("mark", new ChangeReadingStatus(io, logic));
+        this.supportedCommands.put("read", new SearchByReadingStatus(io, logic));
         this.supportedCommands.put("open", new OpenVink(io, logic));
         this.unknown = new Unknown(io, logic);
     }

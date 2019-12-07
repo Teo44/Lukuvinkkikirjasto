@@ -19,7 +19,7 @@ public abstract class Command {
     protected void printSupportedCommands() {
         io.print("------------------------------");
         io.print("");
-        io.print("Supported commands: [new, list, delete, modify, filter, read, open, quit]");
+        io.print("Supported commands: [new, list, delete, modify, filter, read, mark, open, quit]");
     }
     
     protected void printError(String error) {

@@ -4,9 +4,9 @@ import domain.Vink;
 import io.IO;
 import logic.Logic;
 
-public class ReadingStatus extends Command {
+public class ChangeReadingStatus extends Command {
 
-    public ReadingStatus(IO io, Logic logic) {
+    public ChangeReadingStatus(IO io, Logic logic) {
         super(io, logic);
     }
 
