@@ -2,25 +2,24 @@ package ui;
 
 import logic.Logic;
 import io.IO;
+import io.Network;
 
 public class Textual {
     
     private IO io;
     private CommandFactory commandFactory;
     
-    public Textual(Logic logic, IO io) {
-        this.commandFactory = new CommandFactory(io, logic);
+    public Textual(Logic logic, IO io, Network networkCon) {
+        this.commandFactory = new CommandFactory(io, logic, networkCon);
         this.io = io;
     }
     
     public void run() {
         io.print("Welcome to Lukuvinkkikirjasto.");
         
-        
         String command = null;
         
-        while (true) {
-            
+        while (true) {    
             commandFactory.getDefaultObject().printSupportedCommands();
             
             command = io.askUser("Give command");
@@ -28,7 +27,7 @@ public class Textual {
             
             io.print("");
             
-            if (command.equals("quit")) {
+            if (command.equalsIgnoreCase("quit")) {
                 break;
             }
             

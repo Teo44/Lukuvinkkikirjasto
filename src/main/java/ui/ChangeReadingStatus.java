@@ -2,12 +2,13 @@ package ui;
 
 import domain.Vink;
 import io.IO;
+import io.Network;
 import logic.Logic;
 
 public class ChangeReadingStatus extends Command {
 
-    public ChangeReadingStatus(IO io, Logic logic) {
-        super(io, logic);
+    public ChangeReadingStatus(IO io, Logic logic, Network networkCon) {
+        super(io, logic, networkCon);
     }
 
     @Override

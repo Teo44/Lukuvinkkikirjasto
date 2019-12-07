@@ -2,6 +2,7 @@ package ui;
 
 import domain.Vink;
 import io.IO;
+import io.Network;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -9,10 +10,8 @@ import logic.Logic;
 
 public class OpenVink extends Command {
     
-    
-
-    public OpenVink(IO io, Logic logic) {
-        super(io, logic);
+    public OpenVink(IO io, Logic logic, Network networkCon) {
+        super(io, logic, networkCon);
     }
 
     @Override

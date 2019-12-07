@@ -2,14 +2,15 @@ package ui;
 
 import domain.Vink;
 import io.IO;
+import io.Network;
 import java.util.ArrayList;
 import logic.Logic;
 
 public class FilterVinks extends Command {
     ProgressBar progressBar = new ProgressBar();
 
-    public FilterVinks(IO io, Logic logic) {
-        super(io, logic);
+    public FilterVinks(IO io, Logic logic, Network networkCon) {
+        super(io, logic, networkCon);
     }
 
     @Override

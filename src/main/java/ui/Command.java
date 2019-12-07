@@ -1,6 +1,7 @@
 package ui;
 
 import io.IO;
+import io.Network;
 import java.util.ArrayList;
 import logic.Logic;
 
@@ -8,10 +9,12 @@ public abstract class Command {
     
     protected IO io;
     protected Logic logic;
+    protected Network networkCon;
 
-    public Command(IO io, Logic logic) {
+    public Command(IO io, Logic logic, Network networkCon) {
         this.io = io;
         this.logic = logic;
+        this.networkCon = networkCon;
     }
     
     public abstract void handleCommand();

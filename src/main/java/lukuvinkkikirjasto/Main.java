@@ -14,8 +14,8 @@ public class Main {
         IO io = new ConsoleIO();
         VinkDAOSqlite vinkDao = new VinkDAOSqlite("vinkDatabase.db"); 
         Logic logic = new Logic(vinkDao);
-        Network net = new Network(logic);
-        
-        new Textual(logic, io).run();
+        Network networkCon = new Network(logic);
+
+        new Textual(logic, io, networkCon).run();
     }
 }
