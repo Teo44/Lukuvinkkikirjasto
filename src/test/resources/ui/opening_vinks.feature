@@ -2,14 +2,14 @@ Feature: As a user I want to be able to open files (pdf) from the program
 
     Scenario: user can add a vink
         Given command new is selected
-        When  headline "OpenTesti" and type "testiTyyppi" and tags "testitagi1" and comment "testi komeentti" and link "https://testilinkki.com" is selected
+        When  headline "OpenTesti" and type "testiTyyppi" and tags "testitagi1" and comment "testi komeentti" and link "/tyhja/tiedosto/hienokirja.pdf" is selected
         Then  system will respond with "Vink created!"
 
 
     Scenario: user can open a vink
         Given command open is selected
         When  headline "OpenTesti" is selected
-        Then  system will respond with "Vink opened correctly" or "Something went wrong when trying to connect to desktop, try again!"
+        Then  system will respond with "Something went wrong when trying to find a path: /tyhja/tiedosto/hienokirja.pdf, try again!" or "Something went wrong when trying to connect to desktop, try again!"
 
 
     Scenario: user cannot open a vink that doesn't exist
