@@ -6,8 +6,7 @@ import domain.Vink;
 import java.util.ArrayList;
 import logic.Logic;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -21,8 +20,8 @@ public class NetworkTest {
     @BeforeClass
     public static void setUp()  {
         dao = new VinkDAOSqlite("test.db");
-        logic = new Logic(dao);
-        network = new Network(logic);
+        logic = new Logic(dao, network);
+        network = new Network();
     }
     
     @Before
@@ -39,15 +38,9 @@ public class NetworkTest {
     }
     
     @Test
-    public void gettingBookByValidISBNReturnsTrue() {
-        boolean success = network.fetchAndSaveBookByISBN("9780545010221");
-        assertTrue(success);
-    }
-    
-    @Test
-    public void invalidISBNReturnsFalse()   {
-        boolean success = network.fetchAndSaveBookByISBN("111111111111");
-        assertFalse(success);
+    public void invalidISBNReturnsNull()   {
+        String[] result = network.fetchAndSaveBookByISBN("111111111111");
+        assertNull(result);
     }
     
     @Test
