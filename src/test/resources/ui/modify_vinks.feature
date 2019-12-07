@@ -1,4 +1,4 @@
-Feature: user can modify vinks
+Feature: As a user I want to be able to modify the vinks
 
     Scenario: user can add a vink
         Given command new is selected
