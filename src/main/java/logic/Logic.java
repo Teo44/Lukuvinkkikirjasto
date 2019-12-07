@@ -20,7 +20,7 @@ public class Logic {
     }    
     
     public boolean saveVinkByISBN(String isbn) {
-        String[] book = this.networkCon.fetchAndSaveBookByISBN(isbn);
+        String[] book = this.networkCon.fetchBookDetailsByISBN(isbn);
         
         if (book == null || book.length != 2) {
             return false;

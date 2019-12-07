@@ -28,7 +28,15 @@ public class Network {
         this.urlOptions = "&jscmd=data&format=json";
     }
 
-    public String[] fetchAndSaveBookByISBN(String isbn) {
+    /**
+     * Method that takes an isbn-code and uses the openlibrary API to fetch
+     * the Title and author of the book. Returns an String array of length 2
+     * containing the Title in index 0 and Author in index 1 if fetching was
+     * succesfull. Otherwise return null if fetching book details fail.
+     * @param isbn as String
+     * @return and String array of length 2, containing the book title and author.
+     */
+    public String[] fetchBookDetailsByISBN(String isbn) {
         JsonParser jp = new JsonParser();   
         JsonElement rootJsonObj = null;
         
@@ -41,7 +49,7 @@ public class Network {
             req.connect();
             rootJsonObj = jp.parse(new InputStreamReader((InputStream) req.getContent()));
         } catch (Exception e) {
-            System.out.println("Error when trying to fetch book details: " + e.getMessage());
+            //System.out.println("Error when trying to fetch book details: " + e.getMessage());
             return null;
         }
         
