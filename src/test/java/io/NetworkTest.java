@@ -31,9 +31,8 @@ public class NetworkTest {
     
     @Test
     public void gettingHarryPotterByISBN()   {
-        network.fetchAndSaveBookByISBN("9780545010221");
-        ArrayList<Vink> vinks = logic.getAllVinks();
-        assertEquals("Harry Potter and the Deathly Hallows", vinks.get(0).getHeadline());
+        String[] results = network.fetchAndSaveBookByISBN("9780545010221");
+        assertEquals("Harry Potter and the Deathly Hallows", results[0]);
         
     }
     
@@ -42,12 +41,4 @@ public class NetworkTest {
         String[] result = network.fetchAndSaveBookByISBN("111111111111");
         assertNull(result);
     }
-    
-    @Test
-    public void invalidISBNDoesntModifyDatabase()   {
-        network.fetchAndSaveBookByISBN("111111111111");
-        ArrayList<Vink> vinks = logic.getAllVinks();
-        assertEquals(0, vinks.size());
-    }
-
 }
