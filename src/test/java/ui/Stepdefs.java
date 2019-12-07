@@ -83,6 +83,7 @@ public class Stepdefs {
     
     @When("headline {string} and type {string} and tags {string} and comment {string} and link {string} is selected")
     public void newVinkInfoEntered(String headline, String type, String tags, String comment, String link) {
+        inputLines.add("man");
         inputLines.add(headline);
         inputLines.add(type);
         inputLines.add("");
@@ -99,6 +100,7 @@ public class Stepdefs {
     
     @When("headline {string} and type {string} and author {string} and tags {string} and comment {string} is selected")
     public void newBookIsAdded(String headline, String type, String author, String tag, String comment) {
+        inputLines.add("man");
         inputLines.add(headline);
         inputLines.add(type);
         inputLines.add(author);
