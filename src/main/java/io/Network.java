@@ -24,7 +24,7 @@ public class Network {
     public Network(Logic logic) {
         // ISBN code for Harry Potter and the Deadly Hallows
         // "9780545010221"
-        // Fifty Shades of Gray: "978-1-61213-028-6"
+        // Fifty Shades of Gray: "97834UE0348"
         this.logic = logic;
         this.baseUrl = "https://openlibrary.org/api/books?bibkeys=ISBN:";
         this.urlOptions = "&jscmd=data&format=json";
