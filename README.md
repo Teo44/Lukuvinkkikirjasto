@@ -34,14 +34,14 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 
 Available commands:
 
-* **new**  to create a new vink to the database
-* **list** to list all the vinks in the database
+* **new**    to create a new vink to the database
+* **list**   to list all the vinks in the database
 * **delete** to delete a vink by title
 * **modify** to modify vink's parameters
 * **filter** to search vinks using a keyword
-* **read** to list all the vinks with a particular reading progress
-* **mark** to mark a vink as read or unread
-* **open** to open a document according to a vink's file path
+* **read**   to list all the vinks with a particular reading progress
+* **mark**   to mark a vink as read or unread
+* **open**   to open a document according to a vink's file path
 
 
 #### Gradle
@@ -59,7 +59,6 @@ Tests can be run with
 Jacoco testreport can be generated with
 ```
 ./gradlew jacocoTestReport
-
 ```
 
 Checkstyle report can be generated with
