@@ -1,4 +1,4 @@
-Feature: User can create vinks
+Feature: user can list all the vinks 
 
     Scenario: user can add a vink
         Given command new is selected
@@ -6,6 +6,7 @@ Feature: User can create vinks
         Then  system will respond with "Vink created!"
 
 
-    Scenario: user cannot use un supported commands
-        Given command nonexistant is selected
-        Then  system will respond with "Unrecognized command" 
+    Scenario: user can list all the vinks
+        Given command list is selected
+        Then  system will respond with list "Testi" , "testiTyyppi" , "testitagi1" , "testi komeentti" , "https://testilinkki.com"
+

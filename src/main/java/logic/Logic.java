@@ -16,9 +16,9 @@ public class Logic {
         filter = new Filter();
     }    
     
-    public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link) {
+    public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link, String author) {
         ArrayList<String> uniqueTags = deleteDuplicates(tags);
-        Vink vink = new Vink(headline, type, uniqueTags, comment, link);
+        Vink vink = new Vink(headline, type, uniqueTags, comment, link, author);
         
         vinkDao.addVink(vink);
         return true;
@@ -48,14 +48,14 @@ public class Logic {
     
     public boolean updateVinkReadingStatus(String headline, Integer newValue) {
         Vink vink = getVinkByTitle(headline);
-        Vink newVink = new Vink(headline, vink.getType(), vink.getTags(), vink.getComment(), vink.getLink(), newValue, vink.getDatabaseID());
+        Vink newVink = new Vink(headline, vink.getType(), vink.getTags(), vink.getComment(), vink.getLink(), newValue, vink.getAuthor(), vink.getDatabaseID());
         
         return vinkDao.updateVink(newVink);
     }
     
-    public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link) {
+    public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link, String author) {
         Vink originalVink = getVinkByTitle(headline);
-        Vink vink = new Vink(headline, type, tags, comment, link, originalVink.getReadingStatus(), id);
+        Vink vink = new Vink(headline, type, tags, comment, link, originalVink.getReadingStatus(), author, id);
         
         return vinkDao.updateVink(vink);
     }
@@ -65,8 +65,7 @@ public class Logic {
         ArrayList<Vink> vinkList = getAllVinks();
         for (int i = 0; i < vinkList.size(); i++) {
             if (vinkList.get(i).getHeadline().equals(title)) {
-                vinkDao.deleteVink(vinkList.get(i).getDatabaseID());
-                return true;
+                return vinkDao.deleteVink(vinkList.get(i).getDatabaseID());
             }
         }
         return false;

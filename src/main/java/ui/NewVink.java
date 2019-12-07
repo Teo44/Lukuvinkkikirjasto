@@ -14,11 +14,12 @@ public class NewVink extends Command {
     public void handleCommand() {
         String title = io.askUser("Title");
         String type = io.askUser("Type");
+        String author = io.askUser("Author");
         ArrayList<String> tags = askForTags();
         String comment = io.askUser("Comment");
         String link = io.askUser("Link");
-
-        boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment, link);
+        
+        boolean vinkCreatedSuccesfully = logic.saveVink(title, type, tags, comment, link, author);
 
         if (vinkCreatedSuccesfully) {
             io.print("");

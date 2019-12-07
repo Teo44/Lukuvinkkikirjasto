@@ -4,6 +4,7 @@ import domain.Vink;
 import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,7 +29,7 @@ public class VinkDAOTest {
         ArrayList<String> tags = new ArrayList<>();
         tags.add("tag 1");
         tags.add("tag 2");
-        vink = new Vink("headline", "youtube_video", tags, "a comment", "");
+        vink = new Vink("headline", "youtube_video", tags, "a comment", "", "author");
         dao.addVink(vink);
     }
     
@@ -45,6 +46,13 @@ public class VinkDAOTest {
         dao.deleteVink(1);
         ArrayList<Vink> vinks = dao.getAllVinks();
         assertEquals(0, vinks.size());
+    }
+    
+    @Test
+    public void deletingAnExistingVinkReturnsTrue() {
+        basicSetup();
+        boolean deleted = dao.deleteVink(1);
+        assertTrue(deleted);
     }
     
     @Test
@@ -74,7 +82,7 @@ public class VinkDAOTest {
     @Test
     public void editingNonExistingVinkReturnsFalse()    {
         basicSetup();
-        Vink vink2 = new Vink("headline", "youtube_video", new ArrayList<String>(), "a comment", "");
+        Vink vink2 = new Vink("headline", "youtube_video", new ArrayList<String>(), "a comment", "", "author");
         boolean edited = dao.updateVink(vink2);
         assertFalse(edited);
     }

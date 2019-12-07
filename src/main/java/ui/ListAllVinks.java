@@ -27,6 +27,9 @@ public class ListAllVinks extends Command {
             
             io.print("Headline: " + v.getHeadline());
             io.print("Type: " + v.getType());
+            if (!(v.getAuthor().equals("")))    {
+                io.print("Author: " + v.getAuthor());
+            }
             String tagString = new String();
             for (int i = 0; i < v.getTags().size(); i++) {
                 tagString = tagString + v.getTags().get(i);
