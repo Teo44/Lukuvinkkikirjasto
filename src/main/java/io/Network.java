@@ -23,6 +23,7 @@ public class Network {
     public Network() {
         // ISBN code for Harry Potter and the Deadly Hallows
         // "9780545010221"
+        // Fifty Shades of Gray: "97834UE0348"
         this.baseUrl = "https://openlibrary.org/api/books?bibkeys=ISBN:";
         this.urlOptions = "&jscmd=data&format=json";
     }
