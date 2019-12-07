@@ -36,7 +36,7 @@ public class NetworkTest {
     public void gettingHarryPotterByISBN()   {
         String[] results = network.fetchBookDetailsByISBN("9780545010221");
         assertEquals("Harry Potter and the Deathly Hallows", results[0]);
-        assertArrayEquals(results, new String[] {"Harry Potter and the Deathly Hallows", ""});
+        assertArrayEquals(results, new String[] {"Harry Potter and the Deathly Hallows", "J. K. Rowling"});
     }
     
     @Test
@@ -46,7 +46,7 @@ public class NetworkTest {
     
     @Test
     public void invalidISBNReturnsNull()   {
-        assertNotNull(network.fetchBookDetailsByISBN("111111111111"));
+        assertNull(network.fetchBookDetailsByISBN("111111111111"));
     }
 
 }
