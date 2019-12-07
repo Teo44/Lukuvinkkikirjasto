@@ -4,6 +4,7 @@ import domain.Vink;
 import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -45,6 +46,13 @@ public class VinkDAOTest {
         dao.deleteVink(1);
         ArrayList<Vink> vinks = dao.getAllVinks();
         assertEquals(0, vinks.size());
+    }
+    
+    @Test
+    public void deletingAnExistingVinkReturnsTrue() {
+        basicSetup();
+        boolean deleted = dao.deleteVink(1);
+        assertTrue(deleted);
     }
     
     @Test

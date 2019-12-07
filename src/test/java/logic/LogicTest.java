@@ -116,5 +116,4 @@ public class LogicTest {
         ArrayList<Vink> vinks = logic.filterByString("testLink2");
         assertEquals("testTitle2", vinks.get(0).getHeadline());
     }
-
 }
