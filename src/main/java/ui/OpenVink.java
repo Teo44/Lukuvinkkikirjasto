@@ -21,7 +21,11 @@ public class OpenVink extends Command {
         Vink v = logic.getVinkByTitle(title);
 
         if (v == null) {
-            printError("open vink with title: " + title);
+            printError("open a vink with title: " + title);
+            return;
+        }
+        if (v.getLink().equals("")) {
+            printError("open a vink with no path");
             return;
         }
         

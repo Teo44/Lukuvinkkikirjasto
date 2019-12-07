@@ -65,8 +65,7 @@ public class Logic {
         ArrayList<Vink> vinkList = getAllVinks();
         for (int i = 0; i < vinkList.size(); i++) {
             if (vinkList.get(i).getHeadline().equals(title)) {
-                vinkDao.deleteVink(vinkList.get(i).getDatabaseID());
-                return true;
+                return vinkDao.deleteVink(vinkList.get(i).getDatabaseID());
             }
         }
         return false;
