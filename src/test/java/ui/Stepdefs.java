@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import logic.Logic;
+import io.Network;
 import static org.junit.Assert.*;
 
 public class Stepdefs {  
@@ -19,12 +20,14 @@ public class Stepdefs {
     VinkDAOSqlite dao;
     Logic logic;
     StubIO io;
+    Network network;
     List<String> inputLines;
     
     @Before
     public void setup() {
+        network = new Network();
         dao = new VinkDAOSqlite("test.db");
-        logic = new Logic(dao);
+        logic = new Logic(dao, network);
         inputLines = new ArrayList<>();
     }
             
@@ -58,6 +61,16 @@ public class Stepdefs {
         inputLines.add("open");
     }
     
+    @Given("^command read is selected")
+    public void commandReadIsSelected() {
+        inputLines.add("read");
+    }
+    
+    @Given("^command mark is selected")
+    public void commandMarkIsSelected() {
+        inputLines.add("mark");
+    }
+    
     @Given("^command nonexistant is selected")
     public void commandNonexistantIsSelected() {
         inputLines.add("nonexistant");
@@ -67,9 +80,10 @@ public class Stepdefs {
         text = new Textual(logic, io);
         text.run();  
     }
-
+    
     @When("headline {string} and type {string} and tags {string} and comment {string} and link {string} is selected")
     public void newVinkInfoEntered(String headline, String type, String tags, String comment, String link) {
+        inputLines.add("man");
         inputLines.add(headline);
         inputLines.add(type);
         inputLines.add("");
@@ -83,6 +97,24 @@ public class Stepdefs {
         text = new Textual(logic, io);
         text.run();
     }
+    
+    @When("headline {string} and type {string} and author {string} and tags {string} and comment {string} is selected")
+    public void newBookIsAdded(String headline, String type, String author, String tag, String comment) {
+        inputLines.add("man");
+        inputLines.add(headline);
+        inputLines.add(type);
+        inputLines.add(author);
+        inputLines.add(tag);
+        inputLines.add("");
+        inputLines.add(comment);
+        inputLines.add("");
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
+    }
+    
     
     @When("headline {string} is selected")
     public void selecAVink(String headline) {
@@ -115,6 +147,26 @@ public class Stepdefs {
         text.run();
     }
    
+    @When("reading status {string} is selected")
+    public void readingStatusIsSelected(String status) {
+        inputLines.add(status);
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
+    }
+            
+    @When("headline {string} and status {string} are selected")  
+    public void markingVinkIsChanging(String headline, String status) {
+        inputLines.add(headline);
+        inputLines.add(status);
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
+    }
     
     @Then("system will respond with {string}")
     public void systemWillRespondWith(String expectedOutput) {
@@ -131,6 +183,20 @@ public class Stepdefs {
         vink.add("Comment: " + e4);
         vink.add("Link: " + e5);
         assertTrue(io.getPrints().containsAll(vink));
+    }
+    
+    @Then("system will respond with reading progress {string} and headline {string}")
+    public void readingStatusCheckForBook(String status, String headline) {
+        ArrayList rStatus = new ArrayList<>();
+        if (inputLines.contains("1")) {
+            rStatus.add("Reading progress: \u001b[31;1m" + status+"\u001B[0m");
+        } else if (inputLines.contains("2")) {
+            rStatus.add("Reading progress: \u001b[33;1m" + status+"\u001B[0m");
+        } else {
+            rStatus.add("Reading progress: \u001b[32;1m" + status+"\u001B[0m");
+        }
+        rStatus.add("Headline: " + headline);
+        assertTrue(io.getPrints().containsAll(rStatus));
     }
     
     @Then("system will respond with {string} or {string}")

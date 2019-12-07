@@ -5,9 +5,11 @@ import database.VinkDAOSqlite;
 import domain.Vink;
 import java.util.ArrayList;
 import logic.Logic;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -21,8 +23,8 @@ public class NetworkTest {
     @BeforeClass
     public static void setUp()  {
         dao = new VinkDAOSqlite("test.db");
-        logic = new Logic(dao);
-        network = new Network(logic);
+        logic = new Logic(dao, network);
+        network = new Network();
     }
     
     @Before
@@ -32,29 +34,19 @@ public class NetworkTest {
     
     @Test
     public void gettingHarryPotterByISBN()   {
-        network.fetchBookDetailsByISBN("9780545010221");
-        ArrayList<Vink> vinks = logic.getAllVinks();
-        assertEquals("Harry Potter and the Deathly Hallows", vinks.get(0).getHeadline());
-        
+        String[] results = network.fetchBookDetailsByISBN("9780545010221");
+        assertEquals("Harry Potter and the Deathly Hallows", results[0]);
+        assertArrayEquals(results, new String[] {"Harry Potter and the Deathly Hallows", ""});
     }
     
     @Test
-    public void gettingBookByValidISBNReturnsTrue() {
-        boolean success = network.fetchBookDetailsByISBN("9780545010221");
-        assertTrue(success);
+    public void gettingBookByValidISBNDoesNotReturnNull() {
+        assertNotNull(network.fetchBookDetailsByISBN("9780545010221"));
     }
     
     @Test
-    public void invalidISBNReturnsFalse()   {
-        boolean success = network.fetchBookDetailsByISBN("111111111111");
-        assertFalse(success);
-    }
-    
-    @Test
-    public void invalidISBNDoesntModifyDatabase()   {
-        network.fetchBookDetailsByISBN("111111111111");
-        ArrayList<Vink> vinks = logic.getAllVinks();
-        assertEquals(0, vinks.size());
+    public void invalidISBNReturnsNull()   {
+        assertNotNull(network.fetchBookDetailsByISBN("111111111111"));
     }
 
 }

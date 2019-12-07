@@ -6,21 +6,23 @@ import static org.junit.Assert.*;
 
 import domain.Vink;
 import database.VinkDAOSqlite;
+import io.Network;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import logic.Logic;
 import org.junit.Before;
 
 public class LogicTest {
     
     static Logic logic;
     static VinkDAOSqlite vinkDao;
+    static Network network;
     static ArrayList<String> list;
 
     @BeforeClass
     public static void setUp() {
         vinkDao = new VinkDAOSqlite("logicTestDatabase.db");
-        logic = new Logic(vinkDao);
+        network = new Network();
+        logic = new Logic(vinkDao, network);
         list = new ArrayList<>();
         list.add("test1");
         list.add("test2");
