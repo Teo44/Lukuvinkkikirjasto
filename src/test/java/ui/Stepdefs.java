@@ -77,6 +77,11 @@ public class Stepdefs {
         inputLines.add("isbn");
     }
     
+    @Given("^command filter is selected")
+    public void commandFilterIsSelected() {
+        inputLines.add("filter");
+    }
+    
     @Given("^command nonexistant is selected")
     public void commandNonexistantIsSelected() {
         inputLines.add("nonexistant");
@@ -162,6 +167,16 @@ public class Stepdefs {
         text.run();
     }
    
+    @When("filter word {string} is selected")
+    public void filterWordIsSelected(String word) {
+        inputLines.add(word);
+        inputLines.add("quit");
+        
+        io = new StubIO(inputLines);
+        text = new Textual(logic, io);
+        text.run();
+    }
+    
     @When("reading status {string} is selected")
     public void readingStatusIsSelected(String status) {
         inputLines.add(status);
@@ -197,6 +212,18 @@ public class Stepdefs {
         vink.add("Tags: " + e3);
         vink.add("Comment: " + e4);
         vink.add("Link: " + e5);
+        assertTrue(io.getPrints().containsAll(vink));
+    }
+    
+    @Then("system will give a filtered list {string} , {string} , {string} , {string} , {string}")
+    public void systemWillRespondWithFilteredList(String e1, String e2, String e3, String e4, String e5) {
+        ArrayList vink = new ArrayList<>();
+        vink.add("Headline: " + "\u001b[32;1m" + e1 + "\u001B[0m");
+        vink.add("Type: " + "\u001b[32;1m" + "filterTesti" + "\u001B[0m" + "Tyyppi");
+        vink.add("Tags: " + e3);
+        vink.add("Comment: " + e4);
+        vink.add("Link: " + e5);
+        
         assertTrue(io.getPrints().containsAll(vink));
     }
     
