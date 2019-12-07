@@ -5,6 +5,7 @@ import ui.Textual;
 import database.VinkDAOSqlite;
 import io.ConsoleIO;
 import io.IO;
+import io.Network;
 
 
 public class Main {
@@ -13,13 +14,8 @@ public class Main {
         IO io = new ConsoleIO();
         VinkDAOSqlite vinkDao = new VinkDAOSqlite("vinkDatabase.db"); 
         Logic logic = new Logic(vinkDao);
+        Network net = new Network(logic);
         
         new Textual(logic, io).run();
-//        try {
-//            new FancyTerminal().run();
-//        } catch (Exception e) {
-//            System.out.println("errror " + e.getMessage());
-//        }
-        
     }
 }
