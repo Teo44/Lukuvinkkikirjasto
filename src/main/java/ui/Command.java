@@ -9,12 +9,10 @@ public abstract class Command {
     
     protected IO io;
     protected Logic logic;
-    protected Network networkCon;
 
-    public Command(IO io, Logic logic, Network networkCon) {
+    public Command(IO io, Logic logic) {
         this.io = io;
         this.logic = logic;
-        this.networkCon = networkCon;
     }
     
     public abstract void handleCommand();

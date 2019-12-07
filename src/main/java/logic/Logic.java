@@ -2,6 +2,7 @@ package logic;
 
 import domain.Vink;
 import database.VinkDAO;
+import io.Network;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,12 +10,24 @@ import java.util.Set;
 public class Logic {
     private VinkDAO vinkDao;
     private Filter filter;
+    private Network networkCon;
     
-    public Logic(VinkDAO vinkDao) {
+    public Logic(VinkDAO vinkDao, Network networkCon) {
         this.vinkDao = vinkDao;
+        this.networkCon = networkCon;
         vinkDao.createTablesIfNotExist();
         filter = new Filter();
     }    
+    
+    public boolean saveVinkByISBN(String isbn) {
+        String[] book = this.networkCon.fetchAndSaveBookByISBN(isbn);
+        
+        if (book == null || book.length != 2) {
+            return false;
+        }
+        
+        return saveVink(book[0], "book", new ArrayList<>(), "", "", book[1]);
+    }
     
     public boolean saveVink(String headline, String type, ArrayList<String> tags, String comment, String link, String author) {
         ArrayList<String> uniqueTags = deleteDuplicates(tags);

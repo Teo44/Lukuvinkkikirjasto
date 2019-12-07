@@ -1,25 +1,24 @@
 package ui;
 
 import io.IO;
-import io.Network;
 import java.util.ArrayList;
 import logic.Logic;
 
 public class NewVink extends Command {
 
-    public NewVink(IO io, Logic logic, Network networkCon) {
-        super(io, logic, networkCon);
+    public NewVink(IO io, Logic logic) {
+        super(io, logic);
     }
 
     @Override
     public void handleCommand() {
         boolean vinkCreatedSuccesfully = false;
-        boolean byIsbin = io.askUser("Add manually or by isbn [man, isbn]").equalsIgnoreCase("isbn");
+        boolean byIsbin = io.askUser("Add vink manually or by isbn [man, isbn]").equalsIgnoreCase("isbn");
         io.print("");
         
         if (byIsbin) {
             String isbn = io.askUser("Enter the isbn-code");
-            vinkCreatedSuccesfully = networkCon.fetchAndSaveBookByISBN(isbn);
+            vinkCreatedSuccesfully = logic.saveVinkByISBN(isbn);
         } else {
             String title = io.askUser("Title");
             String type = io.askUser("Type");

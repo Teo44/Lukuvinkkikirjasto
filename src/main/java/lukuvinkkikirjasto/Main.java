@@ -12,10 +12,10 @@ public class Main {
 
     public static void main(String[] args) {
         IO io = new ConsoleIO();
+        Network networkCon = new Network();
         VinkDAOSqlite vinkDao = new VinkDAOSqlite("vinkDatabase.db"); 
-        Logic logic = new Logic(vinkDao);
-        Network networkCon = new Network(logic);
-
-        new Textual(logic, io, networkCon).run();
+        Logic logic = new Logic(vinkDao, networkCon);
+        
+        new Textual(logic, io).run();
     }
 }

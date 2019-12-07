@@ -1,13 +1,12 @@
 package ui;
 
 import io.IO;
-import io.Network;
 import logic.Logic;
 
 public class DeleteVink extends Command {
 
-    public DeleteVink(IO io, Logic logic, Network networkCon) {
-        super(io, logic, networkCon);
+    public DeleteVink(IO io, Logic logic) {
+        super(io, logic);
     }
 
     @Override

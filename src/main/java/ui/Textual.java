@@ -9,8 +9,8 @@ public class Textual {
     private IO io;
     private CommandFactory commandFactory;
     
-    public Textual(Logic logic, IO io, Network networkCon) {
-        this.commandFactory = new CommandFactory(io, logic, networkCon);
+    public Textual(Logic logic, IO io) {
+        this.commandFactory = new CommandFactory(io, logic);
         this.io = io;
     }
     

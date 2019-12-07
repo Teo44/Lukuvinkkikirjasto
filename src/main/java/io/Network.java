@@ -18,18 +18,16 @@ public class Network {
     
     private final String baseUrl;
     private final String urlOptions;
-    private Logic logic;
     private URL url;
     
-    public Network(Logic logic) {
+    public Network() {
         // ISBN code for Harry Potter and the Deadly Hallows
         // "9780545010221"
-        this.logic = logic;
         this.baseUrl = "https://openlibrary.org/api/books?bibkeys=ISBN:";
         this.urlOptions = "&jscmd=data&format=json";
     }
 
-    public boolean fetchAndSaveBookByISBN(String isbn) {
+    public String[] fetchAndSaveBookByISBN(String isbn) {
         JsonParser jp = new JsonParser();   
         JsonElement rootJsonObj = null;
         
@@ -43,14 +41,14 @@ public class Network {
             rootJsonObj = jp.parse(new InputStreamReader((InputStream) req.getContent()));
         } catch (Exception e) {
             System.out.println("Error when trying to fetch book details: " + e.getMessage());
-            return false;
+            return null;
         }
         
         JsonObject rootobj = rootJsonObj.getAsJsonObject();
         JsonObject book = rootobj.getAsJsonObject("ISBN:"+isbn);
         
         if (book == null)   {
-            return false;
+            return null;
         }
         
         title = book.get("title").getAsString();
@@ -61,9 +59,7 @@ public class Network {
             author = authorJson.get("name").getAsString();
         }
         
-        logic.saveVink(title, "book", new ArrayList<>(), "", "", author);
-        
-        return true;
+        return new String[] {title, author};
     }
     
     private void openConnection(String isbn) throws MalformedURLException {

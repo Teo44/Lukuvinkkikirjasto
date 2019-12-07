@@ -1,14 +1,13 @@
 package ui;
 
 import io.IO;
-import io.Network;
 import logic.Logic;
 
 public class ListAllVinks extends Command {
     ProgressBar progressBar = new ProgressBar();
     
-    public ListAllVinks(IO io, Logic logic, Network networkCon) {
-        super(io, logic, networkCon);
+    public ListAllVinks(IO io, Logic logic) {
+        super(io, logic);
     }
 
     @Override

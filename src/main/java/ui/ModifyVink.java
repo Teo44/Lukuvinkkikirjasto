@@ -2,14 +2,13 @@ package ui;
 
 import domain.Vink;
 import io.IO;
-import io.Network;
 import java.util.ArrayList;
 import logic.Logic;
 
 public class ModifyVink extends Command {
 
-    public ModifyVink(IO io, Logic logic, Network networkCon) {
-        super(io, logic, networkCon);
+    public ModifyVink(IO io, Logic logic) {
+        super(io, logic);
     }
 
     @Override
