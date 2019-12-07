@@ -20,7 +20,7 @@ public class LogicTest {
 
     @BeforeClass
     public static void setUp() {
-        vinkDao = new VinkDAOSqlite("logicTestDatabase.db");
+        vinkDao = new VinkDAOSqlite("test.db");
         network = new Network();
         logic = new Logic(vinkDao, network);
         list = new ArrayList<>();
