@@ -53,7 +53,7 @@ public class ModifyVink extends Command {
         link = updatedLink.isEmpty() ? link : updatedLink;
         author = updatedAuthor.isEmpty() ? link : updatedLink;
         
-        boolean updatedSuccesfully = logic.updateVink(id, title, type, updatedTags, comment, link, author);
+        boolean updatedSuccesfully = logic.updateVink(id, title, type, updatedTags, comment, link, author, v.getReadingStatus());
         
         if (updatedSuccesfully) {
             io.print("");

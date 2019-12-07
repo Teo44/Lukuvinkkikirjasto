@@ -66,9 +66,8 @@ public class Logic {
         return vinkDao.updateVink(newVink);
     }
     
-    public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link, String author) {
-        Vink originalVink = getVinkByTitle(headline);
-        Vink vink = new Vink(headline, type, tags, comment, link, originalVink.getReadingStatus(), author, id);
+    public boolean updateVink(Integer id, String headline, String type, ArrayList<String> tags, String comment, String link, String author, Integer readingStatus) {
+        Vink vink = new Vink(headline, type, tags, comment, link, readingStatus, author, id);
         
         return vinkDao.updateVink(vink);
     }
