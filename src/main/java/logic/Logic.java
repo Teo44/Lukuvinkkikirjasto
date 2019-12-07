@@ -21,8 +21,7 @@ public class Logic {
         Vink vink = new Vink(headline, type, uniqueTags, comment, link, author);
         
         vinkDao.addVink(vink);
-        return true;                        //returns true if the saving was successfull
-                                            //logic to be implemented later
+        return true;
     }
     
     public Vink getVinkByTitle(String title) {
