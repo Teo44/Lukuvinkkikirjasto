@@ -61,7 +61,6 @@ public class LogicTest {
         assertEquals(vinks.get(1).getComment(), "testComment2");
     }
     
-    // debug this later
     @Test
     public void updateVinkWorks() throws SQLException {
         logic.saveVink("testTitle", "testType", list, "testComment1", "testLink");

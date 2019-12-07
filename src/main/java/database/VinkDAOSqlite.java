@@ -58,14 +58,15 @@ public class VinkDAOSqlite implements VinkDAO {
             Connection connection = DriverManager.getConnection(
                     "jdbc:sqlite:./" + dbFileName, "sa", "");
             PreparedStatement stmt = connection.prepareStatement("UPDATE Vink "
-                    + "SET headline = ?, type = ?, tags = ?, comment = ?, link = ?"
+                    + "SET headline = ?, type = ?, tags = ?, comment = ?, link = ?, readingStatus = ?"
                     + "WHERE id = ?");
             stmt.setString(1, updatedVink.getHeadline());
             stmt.setString(2, updatedVink.getType());
             stmt.setString(3, tagListToString(updatedVink.getTags()));
             stmt.setString(4, updatedVink.getComment());
             stmt.setString(5, updatedVink.getLink());
-            stmt.setInt(6, updatedVink.getDatabaseID());
+            stmt.setInt(6, updatedVink.getReadingStatus());
+            stmt.setInt(7, updatedVink.getDatabaseID());
             int modified = stmt.executeUpdate();
             if (modified == 0)  {
                 return false;
