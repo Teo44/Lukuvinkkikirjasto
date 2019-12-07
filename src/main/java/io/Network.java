@@ -33,7 +33,7 @@ public class Network {
         JsonParser jp = new JsonParser();   
         JsonElement rootJsonObj = null;
         
-        String author = null;
+        String author = "";
         String title = null;
         
         try {
@@ -48,6 +48,10 @@ public class Network {
         
         JsonObject rootobj = rootJsonObj.getAsJsonObject();
         JsonObject book = rootobj.getAsJsonObject("ISBN:"+isbn);
+        
+        if (book == null)   {
+            return false;
+        }
         
         title = book.get("title").getAsString();
         
