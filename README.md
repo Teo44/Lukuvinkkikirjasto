@@ -27,7 +27,10 @@ through a text-based interface. Each vink can have a headline, type, comment, a 
 [Burndown](https://docs.google.com/spreadsheets/d/1NiYYkdUoy73aPJDHR0R6Ju9xdiTgUT62SOvrWwu4DPk/edit#gid=0)  
 [Project documents](https://drive.google.com/drive/folders/1vjlllWe4OPGp9iqdESAkCbsBWRAaRfYo?usp=sharing)  
 [CircleCI](https://circleci.com/gh/Teo44/Lukuvinkkikirjasto)  
-### Release
+
+### Releases
+[v0.2](https://github.com/Teo44/Lukuvinkkikirjasto/releases/tag/v0.2)  
+
 [v0.1](https://github.com/Teo44/Lukuvinkkikirjasto/releases/tag/v0.1)  
 
 ### Usage
@@ -44,9 +47,9 @@ Available commands:
 * **open**   to open a document according to a vink's file path
 
 
-#### Gradle
+### Gradle
 
-### Installation
+#### Installation
 
 After cloning this repository you can run the project with running  
 ```
