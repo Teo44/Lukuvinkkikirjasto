@@ -8,6 +8,7 @@ public class CommandFactory {
     
     private HashMap<String, Command> supportedCommands;
     private Command unknown;
+    private String[] supportedCommandsArray;
 
     public CommandFactory(IO io, Logic logic) {
         this.supportedCommands = new HashMap<>();
@@ -20,6 +21,12 @@ public class CommandFactory {
         this.supportedCommands.put("read", new SearchByReadingStatus(io, logic));
         this.supportedCommands.put("open", new OpenVink(io, logic));
         this.unknown = new Unknown(io, logic);
+        
+        initializeSupportedCommandsArray();
+    }
+    
+    public String[] getSupportedCommands() {
+        return supportedCommandsArray;
     }
     
     public Command getCommand(String command) {
@@ -28,6 +35,12 @@ public class CommandFactory {
     
     public Command getDefaultObject() {
         return getCommand("faultyinvalidcommand");
+    }
+    
+    private void initializeSupportedCommandsArray() {
+        this.supportedCommandsArray = new String[this.supportedCommands.keySet().size() + 1];
+        this.supportedCommands.keySet().toArray(supportedCommandsArray);
+        this.supportedCommandsArray[supportedCommandsArray.length - 1] = "quit";
     }
     
 }

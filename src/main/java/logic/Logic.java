@@ -128,4 +128,14 @@ public class Logic {
         return vinkDao.getAllVinks();
     }
     
+    public ArrayList<String> getAllVinksHeadlines() {
+        return vinkDao.getAllVinksHeadlines();
+    }
+    
+    public String[] getAllVinksHeadlinesArray() {
+        ArrayList<String> headlines = getAllVinksHeadlines();
+        String[] headlinesArray = new String[headlines.size()];
+        return getAllVinksHeadlines().toArray(headlinesArray);
+    }
+    
 }

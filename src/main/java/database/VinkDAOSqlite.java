@@ -21,6 +21,27 @@ public class VinkDAOSqlite implements VinkDAO {
     }
     
     @Override
+    public ArrayList<String> getAllVinksHeadlines() {
+        ArrayList<String> headlines = new ArrayList<>();
+        try {
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:sqlite:./" + dbFileName, "sa", "");
+            PreparedStatement stmt = connection.prepareStatement("SELECT headline FROM Vink");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                headlines.add(rs.getString("headline"));
+            }
+            rs.close();
+            stmt.close();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return headlines;
+    }
+    
+    @Override
     public ArrayList<Vink> getAllVinks()    {
         ArrayList<Vink> vinks = new ArrayList<>();
         try {

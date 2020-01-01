@@ -15,7 +15,7 @@ public class OpenVink extends Command {
 
     @Override
     public void handleCommand() {
-        String title = io.askUser("Title of vink to open");
+        String title = io.askUser("Title of vink to open", logic.getAllVinksHeadlinesArray());
         Vink v = logic.getVinkByTitle(title);
 
         if (v == null) {

@@ -21,7 +21,7 @@ public class Textual {
         while (true) {    
             commandFactory.getDefaultObject().printSupportedCommands();
             
-            command = io.askUser("Give command");
+            command = io.askUser("Give command", this.commandFactory.getSupportedCommands());
             command = command.toLowerCase();
             
             io.print("");

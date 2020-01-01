@@ -31,7 +31,7 @@ public class StubIO implements IO {
     }
 
     @Override
-    public String askUser(String question) {
+    public String askUser(String question, String... suggestions) {
         return readLine(question);
     }
 }

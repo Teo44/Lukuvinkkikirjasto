@@ -13,6 +13,8 @@ public interface VinkDAO {
     boolean deleteVink(Integer databaseID);
 
     ArrayList<Vink> getAllVinks();
+    
+    ArrayList<String> getAllVinksHeadlines();
 
     boolean updateVink(Vink updatedVink);
 }

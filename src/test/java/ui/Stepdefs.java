@@ -2,7 +2,6 @@
 package ui;
 
 import database.VinkDAOSqlite;
-import domain.Vink;
 import io.StubIO;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -10,7 +9,6 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import logic.Logic;
 import io.Network;
 import static org.junit.Assert.*;
