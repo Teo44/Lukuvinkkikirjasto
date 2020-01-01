@@ -20,23 +20,14 @@ public class ConsoleIO implements IO {
                 .system(true)
                 .jansi(true)
                 .build();
-        //this.lineReader = LineReaderBuilder.builder()
-        //        .terminal(terminal)
-        //        .completer(new StringsCompleter("new", "list", "modify", "quit"))
-        //        .build();
     }
-    
-    
+
     @Override
     public void print(String toPrint) {
         System.out.println(toPrint);
     }
 
-    public int readInt(String prompt) {
-        System.out.println(prompt);
-        return Integer.parseInt(scanner.nextLine());
-    }
-
+    
     @Override
     public String readLine(String prompt) {
         System.out.println(prompt);
@@ -45,8 +36,6 @@ public class ConsoleIO implements IO {
 
     @Override
     public String askUser(String question, String... suggestions) {
-        //System.out.print(question + ": ");
-        //return scanner.nextLine().trim();
         if (suggestions != null) {
             this.lineReader = LineReaderBuilder.builder()
                     .terminal(terminal)
@@ -55,9 +44,9 @@ public class ConsoleIO implements IO {
             this.lineReader.setVariable(LineReader.DISABLE_COMPLETION, false);
         }
         
-        String userInput = this.lineReader.readLine(question + ": ").trim();
+        String userInput = this.lineReader.readLine(question + ": ");
         this.lineReader.setVariable(LineReader.DISABLE_COMPLETION, true);
-        return userInput;
+        return userInput.trim();
     }
     
 }

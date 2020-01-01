@@ -6,6 +6,7 @@ import database.VinkDAOSqlite;
 import io.ConsoleIO;
 import io.IO;
 import io.Network;
+import java.io.IOException;
 
 
 public class Main {
@@ -15,10 +16,10 @@ public class Main {
         
         try {
             io = new ConsoleIO();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Could not initialize IO: " + e.getMessage());
             System.out.println("exiting...");
-            System.exit(1); // exit with status 1
+            System.exit(1); // exiting with status 1
         }
         
         Network networkCon = new Network();
